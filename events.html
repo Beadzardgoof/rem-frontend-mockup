@@ -211,6 +211,190 @@
                 margin-top: 3rem;
             }
 
+            /* ── Vertical Calendar Tab (fixed left edge) ───────────── */
+            .cal-tab-btn {
+                position: fixed;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                writing-mode: vertical-lr;
+                background: #552697;
+                color: #fff;
+                padding: 1.4rem 0.85rem;
+                text-decoration: none;
+                font-size: 0.72rem;
+                font-weight: 800;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                border-radius: 0 6px 6px 0;
+                box-shadow: 3px 0 12px rgba(85, 38, 151, 0.28);
+                z-index: 200;
+                transition: background 0.2s ease, padding 0.2s ease;
+                white-space: nowrap;
+            }
+            .cal-tab-btn::after {
+                content: ' ▼';
+                font-size: 0.6rem;
+                opacity: 0.75;
+            }
+            .cal-tab-btn:hover,
+            .cal-tab-btn:focus {
+                background: #3d1a72;
+                padding-left: 1.1rem;
+                padding-right: 1.1rem;
+                outline: none;
+            }
+
+            /* ── Calendar section ───────────────────────────────────── */
+            .cal-wrap {
+                max-width: 820px;
+            }
+            .cal-header {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 1.2rem;
+            }
+            .cal-nav-btn {
+                background: none;
+                border: 1px solid #c8bde8;
+                color: #552697;
+                border-radius: 4px;
+                padding: 0.3rem 0.7rem;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background 0.15s ease;
+            }
+            .cal-nav-btn:hover {
+                background: #f3f1fe;
+            }
+            .cal-month-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #552697;
+                flex: 1;
+            }
+            .cal-grid {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 3px;
+                margin-bottom: 2rem;
+            }
+            .cal-weekday {
+                text-align: center;
+                font-size: 0.68rem;
+                font-weight: 800;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #888;
+                padding: 0.4rem 0;
+            }
+            .cal-day {
+                position: relative;
+                min-height: 54px;
+                background: #faf9fe;
+                border: 1px solid #e8e4f8;
+                border-radius: 4px;
+                padding: 0.4rem 0.5rem;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #2b2b2b;
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .cal-day.cal-empty {
+                background: transparent;
+                border-color: transparent;
+            }
+            .cal-day.cal-today {
+                border-color: #552697;
+                background: #f3f1fe;
+            }
+            .cal-day.cal-today::before {
+                content: '';
+                position: absolute;
+                top: 4px;
+                right: 5px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: #552697;
+            }
+            .cal-day.cal-has-event {
+                background: #fffbf0;
+                border-color: #ffc03d;
+            }
+            .cal-event-dot {
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: #ffc03d;
+                margin-top: 2px;
+                flex-shrink: 0;
+            }
+            .cal-event-label {
+                font-size: 0.62rem;
+                font-weight: 700;
+                color: #552697;
+                line-height: 1.2;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+
+            /* Event list below calendar */
+            .cal-event-list {
+                border-top: 2px solid #e8e4f8;
+                padding-top: 1.2rem;
+            }
+            .cal-event-list-heading {
+                font-family: 'Playfair Display', serif;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #552697;
+                margin-bottom: 0.8rem;
+            }
+            .cal-event-list ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+            .cal-event-list li {
+                display: flex;
+                align-items: baseline;
+                gap: 0.75rem;
+                font-size: 0.88rem;
+            }
+            .cal-event-list-date {
+                font-weight: 800;
+                color: #552697;
+                min-width: 48px;
+                flex-shrink: 0;
+                font-size: 0.78rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+            .cal-event-list-title {
+                font-weight: 700;
+                color: #2b2b2b;
+                text-decoration: none;
+            }
+            .cal-event-list-title:hover {
+                color: #552697;
+            }
+            .cal-event-list-time {
+                color: #888;
+                font-size: 0.8rem;
+                margin-left: auto;
+            }
+
             /* Responsive */
             @media (max-width: 768px) {
                 .events-upcoming-grid {
@@ -222,6 +406,24 @@
                 }
                 .timeline-date-day {
                     font-size: 1.3rem;
+                }
+                .cal-tab-btn {
+                    display: none;
+                }
+                .cal-day {
+                    min-height: 44px;
+                    font-size: 0.78rem;
+                    padding: 0.3rem 0.3rem;
+                }
+                .cal-event-label {
+                    display: none;
+                }
+                .cal-event-list li {
+                    flex-wrap: wrap;
+                }
+                .cal-event-list-time {
+                    margin-left: 0;
+                    width: 100%;
                 }
             }
         </style>
@@ -259,8 +461,13 @@
                             <li><a href="#">Past Exhibits</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#">Events</a>
+                    <li class="nav-item has-dropdown">
+                        <a href="events.html">Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="events.html#upcoming-events">Upcoming Events</a></li>
+                            <li><a href="events.html#calendar">Events Calendar</a></li>
+                            <li><a href="events.html#past-events">Past Events</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item has-dropdown">
                         <a href="#">Classes</a>
@@ -324,7 +531,7 @@
             <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
                 <ul class="mobile-nav-list">
                     <li><a href="#">Exhibits</a></li>
-                    <li><a href="#">Events</a></li>
+                    <li><a href="events.html">Events</a></li>
                     <li><a href="#">Classes</a></li>
                     <li><a href="#">Visit</a></li>
                     <li><a href="#">Support</a></li>
@@ -335,6 +542,11 @@
                 </ul>
             </div>
         </header>
+
+        <!-- Fixed vertical calendar tab -->
+        <a href="#calendar" class="cal-tab-btn" aria-label="Jump to Events Calendar">
+            Events Calendar
+        </a>
 
         <!-- ===================== MAIN CONTENT ===================== -->
         <main id="main-content">
@@ -697,7 +909,95 @@
             </section>
             <!-- end #past-events -->
 
-            <!-- ===== 4. NEWSLETTER BANNER ===== -->
+            <!-- ===== 4. EVENTS CALENDAR ===== -->
+            <section
+                class="events-section section-container"
+                id="calendar"
+                aria-label="Events Calendar"
+            >
+                <div class="section-label-row">
+                    <h2 class="section-heading">Events Calendar</h2>
+                    <div class="section-rule" aria-hidden="true"></div>
+                </div>
+
+                <div class="cal-wrap">
+                    <div class="cal-header">
+                        <button class="cal-nav-btn" aria-label="Previous month">&#8592;</button>
+                        <h3 class="cal-month-title">April 2026</h3>
+                        <button class="cal-nav-btn" aria-label="Next month">&#8594;</button>
+                    </div>
+
+                    <div class="cal-grid" role="grid" aria-label="April 2026">
+
+                        <!-- Weekday headers -->
+                        <div class="cal-weekday" role="columnheader">Sun</div>
+                        <div class="cal-weekday" role="columnheader">Mon</div>
+                        <div class="cal-weekday" role="columnheader">Tue</div>
+                        <div class="cal-weekday" role="columnheader">Wed</div>
+                        <div class="cal-weekday" role="columnheader">Thu</div>
+                        <div class="cal-weekday" role="columnheader">Fri</div>
+                        <div class="cal-weekday" role="columnheader">Sat</div>
+
+                        <!-- April 1 starts on Wednesday — 3 empty cells -->
+                        <div class="cal-day cal-empty" aria-hidden="true"></div>
+                        <div class="cal-day cal-empty" aria-hidden="true"></div>
+                        <div class="cal-day cal-empty" aria-hidden="true"></div>
+
+                        <div class="cal-day">1</div>
+                        <div class="cal-day">2</div>
+                        <div class="cal-day">3</div>
+                        <div class="cal-day">4</div>
+                        <div class="cal-day cal-today" aria-label="April 5, today">5</div>
+                        <div class="cal-day">6</div>
+                        <div class="cal-day">7</div>
+                        <div class="cal-day">8</div>
+                        <div class="cal-day">9</div>
+                        <div class="cal-day">10</div>
+                        <div class="cal-day">11</div>
+                        <div class="cal-day">12</div>
+                        <div class="cal-day">13</div>
+                        <div class="cal-day">14</div>
+                        <div class="cal-day">15</div>
+                        <div class="cal-day">16</div>
+                        <div class="cal-day">17</div>
+                        <div class="cal-day">18</div>
+                        <div class="cal-day">19</div>
+                        <div class="cal-day">20</div>
+                        <div class="cal-day">21</div>
+                        <div class="cal-day">22</div>
+                        <div class="cal-day">23</div>
+                        <div class="cal-day cal-has-event" aria-label="April 24 — Heart of Art 2026">
+                            24
+                            <span class="cal-event-dot" aria-hidden="true"></span>
+                            <span class="cal-event-label">Heart of Art 2026</span>
+                        </div>
+                        <div class="cal-day">25</div>
+                        <div class="cal-day">26</div>
+                        <div class="cal-day">27</div>
+                        <div class="cal-day">28</div>
+                        <div class="cal-day">29</div>
+                        <div class="cal-day">30</div>
+
+                        <!-- 2 trailing empty cells to complete the last row -->
+                        <div class="cal-day cal-empty" aria-hidden="true"></div>
+                        <div class="cal-day cal-empty" aria-hidden="true"></div>
+                    </div>
+
+                    <div class="cal-event-list">
+                        <h4 class="cal-event-list-heading">Events this month</h4>
+                        <ul>
+                            <li>
+                                <span class="cal-event-list-date">Apr 24</span>
+                                <a href="#upcoming-events" class="cal-event-list-title">Heart of Art 2026</a>
+                                <span class="cal-event-list-time">5:30 PM &middot; Lafayette Country Club</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- end #calendar -->
+
+            <!-- ===== 5. NEWSLETTER BANNER ===== -->
             <section class="newsletter-banner" aria-label="Newsletter Signup">
                 <div class="newsletter-inner">
                     <div class="newsletter-text">
