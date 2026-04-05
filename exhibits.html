@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Exhibits — Art Museum of Greater Lafayette</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <style>
+            /* ── Featured exhibit hero ── */
+            .exhibit-featured-hero {
+                background-color: #552697;
+            }
+
+            .exhibit-featured-inner {
+                display: flex;
+                min-height: 480px;
+            }
+
+            .exhibit-featured-image {
+                flex: 0 0 55%;
+                max-width: 55%;
+            }
+
+            .exhibit-featured-image .placeholder-media {
+                width: 100%;
+                height: 100%;
+                min-height: 420px;
+                border-radius: 0;
+                border: 2px dashed #cccccc;
+                background: #ffffff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .exhibit-featured-content {
+                flex: 0 0 45%;
+                max-width: 45%;
+                background-color: #552697;
+                padding: 3.5rem 3rem 3.5rem 3rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .exhibit-featured-eyebrow {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                font-variant: small-caps;
+                color: #ffc03d;
+            }
+
+            .exhibit-featured-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #ffffff;
+                line-height: 1.25;
+                margin: 0;
+            }
+
+            .exhibit-featured-meta {
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .exhibit-featured-dates {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.92rem;
+                font-weight: 700;
+                font-style: italic;
+                color: #ffffff;
+            }
+
+            .exhibit-featured-gallery {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.88rem;
+                color: rgba(255, 255, 255, 0.75);
+            }
+
+            .exhibit-featured-desc {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.95rem;
+                line-height: 1.7;
+                color: rgba(255, 255, 255, 0.9);
+                margin: 0;
+            }
+
+            /* ── Tab nav ── */
+            .exhibits-tab-nav {
+                background-color: #f5f5f5;
+                border-bottom: 1px solid #e0dce8;
+            }
+
+            .exhibits-tab-nav-inner {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+                display: flex;
+                gap: 0;
+            }
+
+            .exhibits-tab-link {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #555555;
+                text-decoration: none;
+                padding: 1rem 1.5rem;
+                display: inline-block;
+                border-bottom: 3px solid transparent;
+                transition: color 0.2s, border-color 0.2s;
+            }
+
+            .exhibits-tab-link:hover {
+                color: #552697;
+                border-bottom-color: #e8e4f8;
+            }
+
+            .exhibits-tab-link.is-active {
+                color: #552697;
+                border-bottom-color: #ffc03d;
+            }
+
+            /* ── Exhibit card grid ── */
+            .exhibits-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .exhibit-card {
+                display: flex;
+                flex-direction: column;
+                border-radius: 4px;
+                overflow: hidden;
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            }
+
+            .exhibit-card-image {
+                aspect-ratio: 4 / 3;
+                border: 2px dashed #cccccc;
+                background: #ffffff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.4rem;
+                color: #999999;
+            }
+
+            .exhibit-card-image .placeholder-label {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: #aaaaaa;
+            }
+
+            .exhibit-card-image .placeholder-hint {
+                font-family: 'Open Sans', sans-serif;
+                font-size: 0.75rem;
+                color: #bbbbbb;
+            }
+
+            .exhibit-card-body {
+                background-color: #f3f1fe;
+                padding: 1.4rem 1.3rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .exhibit-card-title {
+                font-family: 'Playfair Display', serif;
+                color: #552697;
+                font-size: 1.15rem;
+                font-weight: 700;
+                line-height: 1.3;
+                margin: 0;
+            }
+
+            .exhibit-card-dates {
+                font-size: 0.85rem;
+                font-weight: 700;
+                font-style: italic;
+                color: #2b2b2b;
+                margin: 0;
+            }
+
+            .exhibit-card-gallery {
+                font-size: 0.82rem;
+                color: #666666;
+                margin: 0;
+            }
+
+            .exhibit-card-desc {
+                font-size: 0.88rem;
+                color: #2b2b2b;
+                line-height: 1.65;
+                flex: 1;
+                margin: 0;
+            }
+
+            .exhibit-card-footer {
+                padding-top: 0.5rem;
+            }
+
+            /* ── Empty state ── */
+            .exhibits-empty-state {
+                background: #f3f1fe;
+                border: 1px solid #e8e4f8;
+                border-radius: 4px;
+                text-align: center;
+                padding: 3rem 2rem;
+                color: #555555;
+            }
+
+            .exhibits-empty-state p {
+                margin: 0 0 0.4rem;
+                font-family: 'Open Sans', sans-serif;
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .exhibits-empty-state p:last-child {
+                margin: 0;
+                font-size: 0.9rem;
+                color: #888888;
+            }
+
+            /* ── Exhibits sections spacing ── */
+            .exhibits-section {
+                padding: 4rem 0;
+            }
+
+            .exhibits-section + .exhibits-section {
+                padding-top: 0;
+            }
+
+            /* ── newsletter override for purple bg ── */
+            .newsletter-banner {
+                background-color: #552697 !important;
+            }
+
+            /* ── Responsive ── */
+            @media (max-width: 1024px) {
+                .exhibits-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .exhibits-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .exhibit-featured-inner {
+                    flex-direction: column;
+                }
+
+                .exhibit-featured-image,
+                .exhibit-featured-content {
+                    flex: none;
+                    max-width: 100%;
+                    width: 100%;
+                }
+
+                .exhibit-featured-image .placeholder-media {
+                    min-height: 260px;
+                }
+
+                .exhibit-featured-content {
+                    padding: 2.5rem 1.5rem;
+                }
+
+                .exhibit-featured-title {
+                    font-size: 1.6rem;
+                }
+
+                .exhibits-tab-nav-inner {
+                    overflow-x: auto;
+                    padding: 0 1rem;
+                    -webkit-overflow-scrolling: touch;
+                    scrollbar-width: none;
+                }
+
+                .exhibits-tab-nav-inner::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .exhibits-tab-link {
+                    white-space: nowrap;
+                    padding: 0.85rem 1rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ===================== SKIP LINK ===================== -->
+        <a href="#main-content" class="skip-link">Skip to Content</a>
+
+        <!-- ===================== HEADER / NAV ===================== -->
+        <header class="site-header" id="site-header">
+            <div class="header-top-bar">
+                <a href="#" class="btn btn-donate-top">Donate</a>
+            </div>
+
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <div class="nav-brand">
+                    <a href="index.html" class="nav-logo-link">
+                        <!-- LOGO PLACEHOLDER -->
+                        <div class="logo-placeholder">
+                            <span class="logo-initials">AMGL</span>
+                            <span class="logo-full-text"
+                                >Art Museum of Greater Lafayette</span
+                            >
+                        </div>
+                    </a>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Exhibits</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Current Exhibits</a></li>
+                            <li><a href="#">Upcoming Exhibits</a></li>
+                            <li><a href="#">Past Exhibits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Events</a>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Classes</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">All Classes</a></li>
+                            <li><a href="#">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Visit</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Docent Tours</a></li>
+                            <li><a href="#">Gift Shop</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Support</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Become a Member</a></li>
+                            <li><a href="#">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Art League</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our History &amp; Mission</a></li>
+                            <li><a href="#">Staff &amp; Board</a></li>
+                            <li><a href="#">Annual Report</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn btn-donate-nav">Donate</a>
+                    <button
+                        class="hamburger-btn"
+                        id="hamburgerBtn"
+                        aria-label="Open Menu"
+                        aria-expanded="false"
+                        aria-controls="mobileMenu"
+                    >
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-label open-label"
+                            >Open Menu</span
+                        >
+                        <span class="hamburger-label close-label"
+                            >Close Menu</span
+                        >
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+                <ul class="mobile-nav-list">
+                    <li><a href="#">Exhibits</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Classes</a></li>
+                    <li><a href="#">Visit</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">About</a></li>
+                    <li>
+                        <a href="#" class="btn btn-donate-mobile">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- ===================== MAIN CONTENT ===================== -->
+        <main id="main-content">
+
+            <!-- ===== 1. FEATURED EXHIBIT HERO ===== -->
+            <section class="exhibit-featured-hero" aria-label="Featured Exhibit">
+                <div class="exhibit-featured-inner">
+
+                    <!-- Image — left 55% -->
+                    <div class="exhibit-featured-image">
+                        <div class="placeholder-media" role="img" aria-label="Featured exhibit image placeholder">
+                            <span class="placeholder-icon" aria-hidden="true">&#9998;</span>
+                            <span class="placeholder-label">Featured Exhibit Image</span>
+                            <span class="placeholder-hint">Approx. 3:2 ratio</span>
+                        </div>
+                    </div>
+
+                    <!-- Content — right 45% -->
+                    <div class="exhibit-featured-content">
+                        <p class="exhibit-featured-eyebrow">Featured Exhibit</p>
+                        <h1 class="exhibit-featured-title">
+                            Alice Baber: From the Permanent Collection
+                        </h1>
+                        <div class="exhibit-featured-meta">
+                            <p class="exhibit-featured-dates">
+                                January 24, 2026 &ndash; May 31, 2026
+                            </p>
+                            <p class="exhibit-featured-gallery">
+                                Weil Gallery
+                            </p>
+                        </div>
+                        <p class="exhibit-featured-desc">
+                            Alice Baber (1928&ndash;1982) was a pioneering American abstract painter celebrated
+                            for her luminous, color-saturated canvases that seem to glow from within.
+                            This exhibit draws from the museum's permanent collection to showcase the
+                            breadth of her lyrical, light-filled work.
+                        </p>
+                        <div>
+                            <a href="#" class="btn btn-primary-dark">Learn More</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- end featured hero -->
+
+            <!-- ===== 2. EXHIBITS TAB NAVIGATION ===== -->
+            <nav class="exhibits-tab-nav" aria-label="Exhibits sections">
+                <div class="exhibits-tab-nav-inner">
+                    <a href="#current-exhibits"  class="exhibits-tab-link is-active">Current Exhibits</a>
+                    <a href="#upcoming-exhibits" class="exhibits-tab-link">Upcoming Exhibits</a>
+                    <a href="#past-exhibits"     class="exhibits-tab-link">Past Exhibits</a>
+                </div>
+            </nav>
+            <!-- end tab nav -->
+
+            <!-- ===== 3. CURRENT EXHIBITS ===== -->
+            <section class="exhibits-section section-container" id="current-exhibits" aria-label="Current Exhibits">
+                <div class="section-label-row">
+                    <h2 class="section-heading">Current Exhibits</h2>
+                    <div class="section-rule" aria-hidden="true"></div>
+                </div>
+
+                <div class="exhibits-grid">
+
+                    <!-- Card 1: LaDonna Vohar -->
+                    <article class="exhibit-card">
+                        <div class="exhibit-card-image" role="img" aria-label="Exhibit image placeholder: LaDonna's Melange">
+                            <span class="placeholder-label">Image Placeholder</span>
+                            <span class="placeholder-hint">4:3 ratio</span>
+                        </div>
+                        <div class="exhibit-card-body">
+                            <h3 class="exhibit-card-title">LaDonna Vohar: "LaDonna's M&eacute;lange"</h3>
+                            <p class="exhibit-card-dates">Jan 24 &ndash; May 10, 2026</p>
+                            <p class="exhibit-card-gallery">Shook Gallery</p>
+                            <p class="exhibit-card-desc">
+                                A vibrant, mixed-media survey of LaDonna Vohar's career, blending
+                                textiles, painting, and sculpture into a richly layered personal narrative.
+                            </p>
+                            <div class="exhibit-card-footer">
+                                <a href="#" class="btn btn-primary-dark">Learn More</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Alice Baber -->
+                    <article class="exhibit-card">
+                        <div class="exhibit-card-image" role="img" aria-label="Exhibit image placeholder: Alice Baber">
+                            <span class="placeholder-label">Image Placeholder</span>
+                            <span class="placeholder-hint">4:3 ratio</span>
+                        </div>
+                        <div class="exhibit-card-body">
+                            <h3 class="exhibit-card-title">Alice Baber: From the Permanent Collection</h3>
+                            <p class="exhibit-card-dates">Jan 24 &ndash; May 31, 2026</p>
+                            <p class="exhibit-card-gallery">Weil Gallery</p>
+                            <p class="exhibit-card-desc">
+                                A selection of luminous abstract canvases from Alice Baber's career,
+                                drawn from the museum's own permanent holdings.
+                            </p>
+                            <div class="exhibit-card-footer">
+                                <a href="#" class="btn btn-primary-dark">Learn More</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: New Artists 2026 -->
+                    <article class="exhibit-card">
+                        <div class="exhibit-card-image" role="img" aria-label="Exhibit image placeholder: New Artists 2026">
+                            <span class="placeholder-label">Image Placeholder</span>
+                            <span class="placeholder-hint">4:3 ratio</span>
+                        </div>
+                        <div class="exhibit-card-body">
+                            <h3 class="exhibit-card-title">New Artists 2026: A Juried Regional High School Art Exhibit</h3>
+                            <p class="exhibit-card-dates">March 14 &ndash; April 19, 2026</p>
+                            <p class="exhibit-card-gallery">East and McDonald Galleries</p>
+                            <p class="exhibit-card-desc">
+                                An annual juried showcase celebrating the outstanding talent of
+                                emerging young artists from high schools across the greater Lafayette region.
+                            </p>
+                            <div class="exhibit-card-footer">
+                                <a href="#" class="btn btn-primary-dark">Learn More</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+            <!-- end current exhibits -->
+
+            <!-- ===== 4. UPCOMING EXHIBITS ===== -->
+            <section class="exhibits-section section-container" id="upcoming-exhibits" aria-label="Upcoming Exhibits">
+                <div class="section-label-row">
+                    <h2 class="section-heading">Upcoming Exhibits</h2>
+                    <div class="section-rule" aria-hidden="true"></div>
+                </div>
+
+                <div class="exhibits-empty-state" role="status">
+                    <p>No upcoming exhibits are currently scheduled.</p>
+                    <p>Check back soon or subscribe to our newsletter for updates.</p>
+                </div>
+            </section>
+            <!-- end upcoming exhibits -->
+
+            <!-- ===== 5. PAST EXHIBITS ===== -->
+            <section class="exhibits-section section-container" id="past-exhibits" aria-label="Past Exhibits">
+                <div class="section-label-row">
+                    <h2 class="section-heading">Past Exhibits</h2>
+                    <div class="section-rule" aria-hidden="true"></div>
+                </div>
+
+                <div class="exhibits-empty-state" role="status">
+                    <p>Past exhibit archive coming soon.</p>
+                    <p>We are building a complete record of our past exhibitions — please check back later.</p>
+                </div>
+            </section>
+            <!-- end past exhibits -->
+
+            <!-- ===== 6. NEWSLETTER BANNER ===== -->
+            <section class="newsletter-banner" aria-label="Newsletter Signup">
+                <div class="newsletter-inner">
+                    <div class="newsletter-text">
+                        <h2 class="newsletter-heading">
+                            Subscribe to Our Newsletter!
+                        </h2>
+                        <p class="newsletter-sub">
+                            Sign up for the Art Museum of Greater Lafayette's
+                            emails to receive updates and alerts on new
+                            exhibits, events and more.
+                        </p>
+                    </div>
+                    <form
+                        class="newsletter-form"
+                        action="#"
+                        method="post"
+                        aria-label="Newsletter signup form"
+                    >
+                        <label for="newsletterEmail" class="sr-only"
+                            >Email Address</label
+                        >
+                        <input
+                            type="email"
+                            id="newsletterEmail"
+                            name="email"
+                            class="newsletter-input"
+                            placeholder="Enter your email address"
+                            required
+                            aria-required="true"
+                        />
+                        <button type="submit" class="btn btn-newsletter-submit">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </section>
+            <!-- end newsletter banner -->
+
+        </main>
+        <!-- end #main-content -->
+
+        <!-- ===================== FOOTER ===================== -->
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-inner">
+                <div class="footer-col footer-col-brand">
+                    <!-- LOGO PLACEHOLDER -->
+                    <div class="footer-logo-placeholder">
+                        <span class="footer-logo-text"
+                            >Art Museum of Greater Lafayette</span
+                        >
+                    </div>
+                    <address class="footer-address">
+                        <strong>102 S. 10th Street, Lafayette, IN 47905</strong
+                        ><br />
+                        <a href="tel:7657421128">765-742-1128</a>
+                    </address>
+                    <div class="footer-report">
+                        <strong>Access 2025's Annual Report</strong><br />
+                        <a href="#" class="btn btn-footer-report"
+                            >Read Report</a
+                        >
+                    </div>
+                </div>
+
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-col-heading">Hours</h4>
+                    <p>Open every day from 11:00 am &ndash; 4:00 pm.</p>
+                    <p>Closed on holidays and between exhibits.</p>
+                </div>
+
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-col-heading">Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Tax Documents</a></li>
+                        <li><a href="#">Board Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-col-newsletter">
+                    <h4 class="footer-col-heading">Stay Connected</h4>
+                    <form
+                        class="footer-newsletter-form"
+                        action="#"
+                        method="post"
+                        aria-label="Footer newsletter form"
+                    >
+                        <label for="footerEmail" class="sr-only"
+                            >Email Address</label
+                        >
+                        <input
+                            type="email"
+                            id="footerEmail"
+                            name="email"
+                            class="footer-newsletter-input"
+                            placeholder="Your email address"
+                            required
+                        />
+                        <button type="submit" class="btn btn-footer-subscribe">
+                            Subscribe
+                        </button>
+                    </form>
+
+                    <!-- SOCIAL LINKS PLACEHOLDER -->
+                    <div class="footer-social" aria-label="Social Media Links">
+                        <p class="footer-social-label">Follow Us:</p>
+                        <div class="footer-social-links">
+                            <a
+                                href="#"
+                                class="social-link"
+                                aria-label="Facebook [placeholder]"
+                            >
+                                <span class="social-icon">f</span>
+                            </a>
+                            <a
+                                href="#"
+                                class="social-link"
+                                aria-label="Instagram [placeholder]"
+                            >
+                                <span class="social-icon">&#9643;</span>
+                            </a>
+                            <a
+                                href="#"
+                                class="social-link"
+                                aria-label="Twitter/X [placeholder]"
+                            >
+                                <span class="social-icon">&#120143;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <!-- PARTNER/VISITOR INFO LINK PLACEHOLDER -->
+                    <div class="footer-visitor-info">
+                        <a href="#" class="footer-visitor-link">
+                            <span class="footer-visitor-icon">&#127760;</span>
+                            <em
+                                >Your resource for local Visitors'
+                                Information!</em
+                            >
+                        </a>
+                    </div>
+                    <p class="footer-copyright">
+                        &copy; <span id="footerYear"></span> Art Museum of
+                        Greater Lafayette. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <script>
+            // Inline: set footer year dynamically
+            document.getElementById("footerYear").textContent =
+                new Date().getFullYear();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Events — Art Museum of Greater Lafayette</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <style>
+            /* ── Events page-scoped styles ─────────────────────────────── */
+
+            /* Page hero */
+            .events-page-hero {
+                background-color: #552697;
+                color: #fff;
+                padding: 4rem 1.5rem;
+                text-align: center;
+            }
+            .events-page-hero .events-eyebrow {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.6rem;
+            }
+            .events-page-hero h1 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 1rem;
+            }
+            .events-page-hero .events-intro {
+                max-width: 680px;
+                margin: 0 auto;
+                font-size: 0.98rem;
+                color: rgba(255, 255, 255, 0.85);
+                line-height: 1.7;
+            }
+
+            /* Section spacing */
+            .events-section {
+                padding: 4rem 0;
+            }
+            .events-section + .events-section {
+                padding-top: 2rem;
+            }
+
+            /* Upcoming event cards */
+            .events-upcoming-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            .event-card {
+                display: flex;
+                flex-direction: column;
+                border-radius: 4px;
+                overflow: hidden;
+                box-shadow: 0 2px 14px rgba(0, 0, 0, 0.09);
+                transition: box-shadow 0.35s ease, transform 0.35s ease;
+                background: #fff;
+            }
+            .event-card:hover {
+                box-shadow: 0 6px 28px rgba(85, 38, 151, 0.16);
+                transform: translateY(-3px);
+            }
+            .event-card-image {
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+            .event-card-image .placeholder-media {
+                height: 100%;
+                border-radius: 0;
+                border: none;
+                border-bottom: 2px dashed #ccc;
+            }
+            .event-card-body {
+                background: #f3f1fe;
+                padding: 1.5rem 1.4rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 0.55rem;
+            }
+            .event-card-date-pill {
+                display: inline-block;
+                background: #ffc03d;
+                color: #2b2b2b;
+                font-size: 0.72rem;
+                font-weight: 800;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 0.3rem 0.75rem;
+                border-radius: 2px;
+                align-self: flex-start;
+            }
+            .event-card-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #552697;
+                line-height: 1.3;
+            }
+            .event-card-meta {
+                font-size: 0.82rem;
+                color: #666;
+            }
+            .event-card-desc {
+                font-size: 0.88rem;
+                color: #2b2b2b;
+                line-height: 1.7;
+                flex: 1;
+            }
+            .event-card-btn {
+                margin-top: 0.5rem;
+                align-self: flex-start;
+            }
+
+            /* Past events timeline */
+            .events-timeline {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+            .timeline-event {
+                display: grid;
+                grid-template-columns: 72px 1fr;
+                gap: 1.8rem;
+                align-items: start;
+                padding: 1.8rem 0;
+                border-bottom: 1px solid #e8e4f8;
+            }
+            .timeline-event:last-child {
+                border-bottom: none;
+            }
+            .timeline-date-badge {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: #552697;
+                color: #fff;
+                border-radius: 6px;
+                padding: 0.55rem 0.4rem;
+                text-align: center;
+                flex-shrink: 0;
+                min-height: 62px;
+            }
+            .timeline-date-month {
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                line-height: 1;
+                margin-bottom: 0.2rem;
+            }
+            .timeline-date-day {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #fff;
+                line-height: 1;
+            }
+            .timeline-content {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .timeline-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: #552697;
+                line-height: 1.3;
+            }
+            .timeline-datetime {
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: #2b2b2b;
+            }
+            .timeline-location {
+                font-size: 0.82rem;
+                color: #666;
+            }
+            .timeline-desc {
+                font-size: 0.88rem;
+                color: #2b2b2b;
+                line-height: 1.7;
+                margin-top: 0.2rem;
+            }
+            .timeline-actions {
+                display: flex;
+                gap: 0.75rem;
+                margin-top: 0.5rem;
+                flex-wrap: wrap;
+            }
+
+            /* Load more */
+            .events-load-more {
+                text-align: center;
+                margin-top: 3rem;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .events-upcoming-grid {
+                    grid-template-columns: 1fr;
+                }
+                .timeline-event {
+                    grid-template-columns: 58px 1fr;
+                    gap: 1rem;
+                }
+                .timeline-date-day {
+                    font-size: 1.3rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- ===================== SKIP LINK ===================== -->
+        <a href="#main-content" class="skip-link">Skip to Content</a>
+
+        <!-- ===================== HEADER / NAV ===================== -->
+        <header class="site-header" id="site-header">
+            <div class="header-top-bar">
+                <a href="#" class="btn btn-donate-top">Donate</a>
+            </div>
+
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <div class="nav-brand">
+                    <a href="index.html" class="nav-logo-link">
+                        <!-- LOGO PLACEHOLDER -->
+                        <div class="logo-placeholder">
+                            <span class="logo-initials">AMGL</span>
+                            <span class="logo-full-text"
+                                >Art Museum of Greater Lafayette</span
+                            >
+                        </div>
+                    </a>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Exhibits</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Current Exhibits</a></li>
+                            <li><a href="#">Upcoming Exhibits</a></li>
+                            <li><a href="#">Past Exhibits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Events</a>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Classes</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">All Classes</a></li>
+                            <li><a href="#">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Visit</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Docent Tours</a></li>
+                            <li><a href="#">Gift Shop</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Support</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Become a Member</a></li>
+                            <li><a href="#">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Art League</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our History &amp; Mission</a></li>
+                            <li><a href="#">Staff &amp; Board</a></li>
+                            <li><a href="#">Annual Report</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="#" class="btn btn-donate-nav">Donate</a>
+                    <button
+                        class="hamburger-btn"
+                        id="hamburgerBtn"
+                        aria-label="Open Menu"
+                        aria-expanded="false"
+                        aria-controls="mobileMenu"
+                    >
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-label open-label"
+                            >Open Menu</span
+                        >
+                        <span class="hamburger-label close-label"
+                            >Close Menu</span
+                        >
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+                <ul class="mobile-nav-list">
+                    <li><a href="#">Exhibits</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Classes</a></li>
+                    <li><a href="#">Visit</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">About</a></li>
+                    <li>
+                        <a href="#" class="btn btn-donate-mobile">Donate</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- ===================== MAIN CONTENT ===================== -->
+        <main id="main-content">
+
+            <!-- ===== 1. PAGE HERO BANNER ===== -->
+            <section class="events-page-hero" aria-label="Events page introduction">
+                <p class="events-eyebrow">Events</p>
+                <h1>Art &amp; Community</h1>
+                <p class="events-intro">
+                    We are proud to present an array of fun and engaging events that bring art into the
+                    lives of our community. If you would like to be informed of upcoming events, volunteer
+                    for one of our events, or share your ideas for future events, please contact us.
+                </p>
+            </section>
+            <!-- end page hero -->
+
+            <!-- ===== 2. UPCOMING EVENTS ===== -->
+            <section
+                class="events-section section-container"
+                id="upcoming-events"
+                aria-label="Upcoming Events"
+            >
+                <div class="section-label-row">
+                    <h2 class="section-heading">Upcoming Events</h2>
+                    <div class="section-rule" aria-hidden="true"></div>
+                </div>
+
+                <div class="events-upcoming-grid">
+
+                    <!-- Card 1: Heart of Art 2026 -->
+                    <article class="event-card">
+                        <div
+                            class="event-card-image"
+                            role="img"
+                            aria-label="Event image placeholder: Heart of Art 2026"
+                        >
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127912;</span>
+                                <span class="placeholder-label">Event Image</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="event-card-date-pill">April 24, 2026</span>
+                            <h3 class="event-card-title">Heart of Art 2026</h3>
+                            <p class="event-card-meta">
+                                Friday, April 24, 2026 &nbsp;&middot;&nbsp; 5:30 PM<br />
+                                Lafayette Country Club
+                            </p>
+                            <p class="event-card-desc">
+                                Don&rsquo;t miss Heart of Art 2026, where philanthropy meets fun! An evening of fine
+                                dining, live string music, and exclusive auction items hosted by Lafayette legend Jim
+                                Stone from Q106.7. Your support helps fund 30% of our annual budget.
+                            </p>
+                            <div class="event-card-btn">
+                                <a href="#" class="btn btn-primary-dark">Get Tickets</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Opening Reception — Teapots & Sishi Wang -->
+                    <article class="event-card">
+                        <div
+                            class="event-card-image"
+                            role="img"
+                            aria-label="Event image placeholder: Opening Reception Teapots and Sishi Wang with Jessica Mohl Exhibits"
+                        >
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127912;</span>
+                                <span class="placeholder-label">Event Image</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="event-card-date-pill">May 1, 2026</span>
+                            <h3 class="event-card-title">
+                                Opening Reception: Teapots &amp; Sishi Wang with Jessica Mohl Exhibits
+                            </h3>
+                            <p class="event-card-meta">
+                                Friday, May 1, 2026 &nbsp;&middot;&nbsp; 6:00&ndash;7:00 PM<br />
+                                Art Museum of Greater Lafayette
+                            </p>
+                            <p class="event-card-desc">
+                                Join us for the opening of our latest exhibits, featuring teapots from private
+                                collections and works by Sishi Wang and Jessica Mohl. Enjoy complimentary drinks
+                                and hors d&rsquo;oeuvres provided by the Art League.
+                            </p>
+                            <div class="event-card-btn">
+                                <a href="#" class="btn btn-primary-dark">Get Tickets</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: Dearly DepARTed -->
+                    <article class="event-card">
+                        <div
+                            class="event-card-image"
+                            role="img"
+                            aria-label="Event image placeholder: Dearly DepARTed A Museum Murder Mystery"
+                        >
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127912;</span>
+                                <span class="placeholder-label">Event Image</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="event-card-date-pill">June 6, 2026</span>
+                            <h3 class="event-card-title">Dearly DepARTed: A Museum Murder Mystery</h3>
+                            <p class="event-card-meta">
+                                Saturday, June 6, 2026 &nbsp;&middot;&nbsp; 6:00&ndash;9:00 PM<br />
+                                Art Museum of Greater Lafayette
+                            </p>
+                            <p class="event-card-desc">
+                                An exciting and interactive night of detective work to uncover strange happenings at
+                                the museum, including themed beverages and food. Presented by Centier Bank.
+                            </p>
+                            <div class="event-card-btn">
+                                <a href="#" class="btn btn-primary-dark">Get Tickets</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4: Daylily Stroll -->
+                    <article class="event-card">
+                        <div
+                            class="event-card-image"
+                            role="img"
+                            aria-label="Event image placeholder: Daylily Stroll"
+                        >
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127912;</span>
+                                <span class="placeholder-label">Event Image</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="event-card-date-pill">July 11, 2026</span>
+                            <h3 class="event-card-title">Daylily Stroll</h3>
+                            <p class="event-card-meta">
+                                Saturday, July 11, 2026 &nbsp;&middot;&nbsp; 10:00 AM&ndash;2:00 PM<br />
+                                Gregg &amp; Linda Sutter&rsquo;s Private Farm
+                            </p>
+                            <p class="event-card-desc">
+                                Join us at the Sutter private farm for a summer afternoon surrounded by nearly ten
+                                acres of stunning daylilies in full bloom. Members free 10&ndash;12 PM; General
+                                Admission $20/vehicle 12&ndash;2 PM.
+                            </p>
+                            <div class="event-card-btn">
+                                <a href="#" class="btn btn-primary-dark">Get Tickets</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+                <!-- end .events-upcoming-grid -->
+
+            </section>
+            <!-- end #upcoming-events -->
+
+            <!-- ===== 3. PAST EVENTS ===== -->
+            <section
+                class="events-section section-container"
+                id="past-events"
+                aria-label="Past Events"
+            >
+                <div class="section-label-row">
+                    <h2 class="section-heading">Past Events</h2>
+                    <div class="section-rule" aria-hidden="true"></div>
+                </div>
+
+                <div class="events-timeline">
+
+                    <!-- 1. June Friday Night Live — Uncle Buck's Mojo Box -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="June 28">
+                            <span class="timeline-date-month">Jun</span>
+                            <span class="timeline-date-day">28</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">
+                                June Friday Night Live &mdash; Uncle Buck&rsquo;s Mojo Box
+                            </h3>
+                            <p class="timeline-datetime">
+                                Friday, June 28, 2024 &middot; 7:00 PM &ndash; 8:00 PM
+                            </p>
+                            <p class="timeline-location">The Art Museum of Greater Lafayette</p>
+                            <p class="timeline-desc">
+                                A Rock and Blues Power Trio outdoor Friday Night Live. Museum galleries open at
+                                6:00 PM. Free admission thanks to Duke Energy.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-primary-dark">RSVP</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Opening Reception: Laura Ricks' Exhibition -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="June 14">
+                            <span class="timeline-date-month">Jun</span>
+                            <span class="timeline-date-day">14</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">
+                                Opening Reception: Laura Ricks&rsquo; Exhibition
+                            </h3>
+                            <p class="timeline-datetime">
+                                Friday, June 14, 2024 &middot; 6:00 PM &ndash; 7:00 PM
+                            </p>
+                            <p class="timeline-location">The Art Museum of Greater Lafayette</p>
+                            <p class="timeline-desc">
+                                Felt artist Laura Ricks in the Shook Gallery. Marvel at intricate details and
+                                vibrant colors bringing mountain and lakeside scenes to life.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-primary-dark">RSVP</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Dearly DepARTed: Museum Murder Mystery (2024) -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="May 8">
+                            <span class="timeline-date-month">May</span>
+                            <span class="timeline-date-day">8</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Dearly DepARTed: Museum Murder Mystery</h3>
+                            <p class="timeline-datetime">
+                                Wednesday, May 8, 2024 &middot; 6:00 PM &ndash; 7:00 PM
+                            </p>
+                            <p class="timeline-location">The Art Museum of Greater Lafayette</p>
+                            <p class="timeline-desc">
+                                Opening reception for Robert Pulley and Heather Vickers exhibitions. Free
+                                admission, refreshments provided.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-primary-dark">RSVP</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Heart of Art (2024) -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="April 19">
+                            <span class="timeline-date-month">Apr</span>
+                            <span class="timeline-date-day">19</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Heart of Art</h3>
+                            <p class="timeline-datetime">
+                                Friday, April 19, 2024 &middot; 5:30 PM &ndash; 10:00 PM
+                            </p>
+                            <p class="timeline-location">Lafayette Country Club</p>
+                            <p class="timeline-desc">
+                                The signature annual fundraising event in its 15th year &mdash; live and silent
+                                auction providing 30% of the annual operating budget.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-primary-dark">Purchase Tickets</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. April Friday Night Live — Derrick L. Coleman -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="April 26">
+                            <span class="timeline-date-month">Apr</span>
+                            <span class="timeline-date-day">26</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">
+                                April Friday Night Live &mdash; Derrick L. Coleman, Jazzman
+                            </h3>
+                            <p class="timeline-datetime">
+                                Friday, April 26, 2024 &middot; 7:00 PM &ndash; 8:00 PM
+                            </p>
+                            <p class="timeline-location">The Art Museum of Greater Lafayette</p>
+                            <p class="timeline-desc">
+                                Multi-instrumentalist and music producer performing instrumental R&amp;B and
+                                Smooth Jazz. Free admission thanks to Duke Energy.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-primary-dark">RSVP</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Movie Night at the Museum -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="October 25">
+                            <span class="timeline-date-month">Oct</span>
+                            <span class="timeline-date-day">25</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Movie Night at the Museum</h3>
+                            <p class="timeline-datetime">
+                                Wednesday, October 25, 2023 &middot; 6:30 PM &ndash; 9:30 PM
+                            </p>
+                            <p class="timeline-location">The Art Museum of Greater Lafayette</p>
+                            <p class="timeline-desc">
+                                Screening of the &lsquo;Exhibition on Screen&rsquo; film about Matisse. Artist
+                                Amy Kirchner provides commentary at 6:30 PM.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-outline-dark">View Event &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7. Art on the Wabash -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="September 24">
+                            <span class="timeline-date-month">Sep</span>
+                            <span class="timeline-date-day">24</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Art on the Wabash</h3>
+                            <p class="timeline-datetime">
+                                Sunday, September 24, 2023 &middot; 10:00 AM &ndash; 4:00 PM
+                            </p>
+                            <p class="timeline-location">Tapawingo Park</p>
+                            <p class="timeline-desc">
+                                Open-air art gallery featuring approximately 50 regional artists, live music,
+                                food trucks, and children&rsquo;s activities. Free admission and parking.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-outline-dark">View Event &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8. Art, Bark & Brew -->
+                    <div class="timeline-event">
+                        <div class="timeline-date-badge" aria-label="August 12">
+                            <span class="timeline-date-month">Aug</span>
+                            <span class="timeline-date-day">12</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Art, Bark &amp; Brew</h3>
+                            <p class="timeline-datetime">
+                                Saturday, August 12, 2023 &middot; 11:00 AM &ndash; 2:00 PM
+                            </p>
+                            <p class="timeline-location">Art Museum Grounds</p>
+                            <p class="timeline-desc">
+                                Annual outdoor event featuring the EMT Food Truck, Thieme and Wagner Brewery,
+                                art activities and keepsakes for you and your dog. Free admission.
+                            </p>
+                            <div class="timeline-actions">
+                                <a href="#" class="btn btn-primary-dark">RSVP</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end .events-timeline -->
+
+                <!-- Load More -->
+                <div class="events-load-more">
+                    <a href="#" class="btn btn-outline-dark">Load More Events</a>
+                </div>
+
+            </section>
+            <!-- end #past-events -->
+
+            <!-- ===== 4. NEWSLETTER BANNER ===== -->
+            <section class="newsletter-banner" aria-label="Newsletter Signup">
+                <div class="newsletter-inner">
+                    <div class="newsletter-text">
+                        <h2 class="newsletter-heading">
+                            Subscribe to Our Newsletter!
+                        </h2>
+                        <p class="newsletter-sub">
+                            Sign up for the Art Museum of Greater Lafayette&rsquo;s
+                            emails to receive updates and alerts on new
+                            exhibits, events and more.
+                        </p>
+                    </div>
+                    <form
+                        class="newsletter-form"
+                        action="#"
+                        method="post"
+                        aria-label="Newsletter signup form"
+                    >
+                        <label for="newsletterEmail" class="sr-only"
+                            >Email Address</label
+                        >
+                        <input
+                            type="email"
+                            id="newsletterEmail"
+                            name="email"
+                            class="newsletter-input"
+                            placeholder="Enter your email address"
+                            required
+                            aria-required="true"
+                        />
+                        <button type="submit" class="btn btn-newsletter-submit">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </section>
+            <!-- end newsletter banner -->
+
+        </main>
+        <!-- end #main-content -->
+
+        <!-- ===================== FOOTER ===================== -->
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-inner">
+                <div class="footer-col footer-col-brand">
+                    <!-- LOGO PLACEHOLDER -->
+                    <div class="footer-logo-placeholder">
+                        <span class="footer-logo-text"
+                            >Art Museum of Greater Lafayette</span
+                        >
+                    </div>
+                    <address class="footer-address">
+                        <strong>102 S. 10th Street, Lafayette, IN 47905</strong
+                        ><br />
+                        <a href="tel:7657421128">765-742-1128</a>
+                    </address>
+                    <div class="footer-report">
+                        <strong>Access 2025&rsquo;s Annual Report</strong><br />
+                        <a href="#" class="btn btn-footer-report"
+                            >Read Report</a
+                        >
+                    </div>
+                </div>
+
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-col-heading">Hours</h4>
+                    <p>Open every day from 11:00 am &ndash; 4:00 pm.</p>
+                    <p>Closed on holidays and between exhibits.</p>
+                </div>
+
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-col-heading">Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Tax Documents</a></li>
+                        <li><a href="#">Board Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-col-newsletter">
+                    <h4 class="footer-col-heading">Stay Connected</h4>
+                    <form
+                        class="footer-newsletter-form"
+                        action="#"
+                        method="post"
+                        aria-label="Footer newsletter form"
+                    >
+                        <label for="footerEmail" class="sr-only"
+                            >Email Address</label
+                        >
+                        <input
+                            type="email"
+                            id="footerEmail"
+                            name="email"
+                            class="footer-newsletter-input"
+                            placeholder="Your email address"
+                            required
+                        />
+                        <button type="submit" class="btn btn-footer-subscribe">
+                            Subscribe
+                        </button>
+                    </form>
+
+                    <!-- SOCIAL LINKS PLACEHOLDER -->
+                    <div class="footer-social" aria-label="Social Media Links">
+                        <p class="footer-social-label">Follow Us:</p>
+                        <div class="footer-social-links">
+                            <a
+                                href="#"
+                                class="social-link"
+                                aria-label="Facebook [placeholder]"
+                            >
+                                <span class="social-icon">f</span>
+                            </a>
+                            <a
+                                href="#"
+                                class="social-link"
+                                aria-label="Instagram [placeholder]"
+                            >
+                                <span class="social-icon">&#9643;</span>
+                            </a>
+                            <a
+                                href="#"
+                                class="social-link"
+                                aria-label="Twitter/X [placeholder]"
+                            >
+                                <span class="social-icon">&#120143;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <!-- PARTNER/VISITOR INFO LINK PLACEHOLDER -->
+                    <div class="footer-visitor-info">
+                        <a href="#" class="footer-visitor-link">
+                            <span class="footer-visitor-icon">&#127760;</span>
+                            <em
+                                >Your resource for local Visitors&rsquo;
+                                Information!</em
+                            >
+                        </a>
+                    </div>
+                    <p class="footer-copyright">
+                        &copy; <span id="footerYear"></span> Art Museum of
+                        Greater Lafayette. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <script>
+            // Inline: set footer year dynamically
+            document.getElementById("footerYear").textContent =
+                new Date().getFullYear();
+        </script>
+    </body>
+</html>
