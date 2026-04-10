@@ -1,0 +1,1225 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Classes &amp; Workshops — Art Museum of Greater Lafayette</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <style>
+            /* ── Page hero ────────────────────────────────────────────── */
+            .classes-page-hero {
+                background-color: #552697;
+                color: #fff;
+                padding: 4rem 1.5rem;
+                text-align: center;
+            }
+            .classes-page-hero .classes-eyebrow {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.6rem;
+            }
+            .classes-page-hero h1 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 1rem;
+            }
+            .classes-page-hero .classes-intro {
+                max-width: 680px;
+                margin: 0 auto;
+                font-size: 0.98rem;
+                color: rgba(255, 255, 255, 0.85);
+                line-height: 1.7;
+            }
+
+            /* ── Section spacing ──────────────────────────────────────── */
+            .classes-section {
+                padding: 4rem 0;
+            }
+            .classes-section + .classes-section {
+                padding-top: 2rem;
+            }
+
+            /* ── Filter tabs ──────────────────────────────────────────── */
+            .class-filters {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 2.5rem;
+            }
+            .filter-btn {
+                background: none;
+                border: 1px solid #c8bde8;
+                color: #552697;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 0.45rem 1rem;
+                border-radius: 2px;
+                cursor: pointer;
+                transition: background 0.15s ease, color 0.15s ease;
+            }
+            .filter-btn:hover,
+            .filter-btn.active {
+                background: #552697;
+                color: #fff;
+                border-color: #552697;
+            }
+
+            /* ── Class card grid ──────────────────────────────────────── */
+            .classes-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.8rem;
+            }
+            .class-card {
+                display: flex;
+                flex-direction: column;
+                border-radius: 4px;
+                overflow: hidden;
+                box-shadow: 0 2px 14px rgba(0, 0, 0, 0.09);
+                background: #fff;
+                transition: box-shadow 0.3s ease, transform 0.3s ease;
+            }
+            .class-card:hover {
+                box-shadow: 0 6px 28px rgba(85, 38, 151, 0.16);
+                transform: translateY(-3px);
+            }
+            .class-card-image {
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+            .class-card-image .placeholder-media {
+                height: 100%;
+                border-radius: 0;
+                border: none;
+                border-bottom: 2px dashed #ccc;
+            }
+            .class-card-body {
+                background: #f3f1fe;
+                padding: 1.4rem 1.3rem;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .class-card-top {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+            .class-category-pill {
+                display: inline-block;
+                font-size: 0.65rem;
+                font-weight: 800;
+                letter-spacing: 0.09em;
+                text-transform: uppercase;
+                padding: 0.25rem 0.65rem;
+                border-radius: 2px;
+            }
+            .pill-painting  { background: #d4edff; color: #0a5fa8; }
+            .pill-drawing   { background: #e8fde8; color: #1a7a1a; }
+            .pill-ceramics  { background: #fff0d4; color: #a06000; }
+            .pill-photo     { background: #fde8f5; color: #8a1a6a; }
+            .pill-youth     { background: #fff3cd; color: #856404; }
+            .pill-history   { background: #e8e8e8; color: #444;    }
+            .pill-mixed     { background: #e8d4fd; color: #5a0a9a; }
+
+            .class-level-badge {
+                margin-left: auto;
+                font-size: 0.65rem;
+                font-weight: 700;
+                color: #666;
+                border: 1px solid #ccc;
+                padding: 0.2rem 0.5rem;
+                border-radius: 2px;
+                white-space: nowrap;
+            }
+            .class-card-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #552697;
+                line-height: 1.3;
+            }
+            .class-card-schedule {
+                font-size: 0.82rem;
+                font-weight: 600;
+                color: #2b2b2b;
+                line-height: 1.5;
+            }
+            .class-card-schedule span {
+                display: block;
+            }
+            .class-card-desc {
+                font-size: 0.86rem;
+                color: #444;
+                line-height: 1.65;
+                flex: 1;
+            }
+            .class-card-footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                margin-top: 0.5rem;
+                padding-top: 0.75rem;
+                border-top: 1px solid #ddd6f7;
+                flex-wrap: wrap;
+            }
+            .class-card-price {
+                font-size: 0.82rem;
+                color: #2b2b2b;
+                line-height: 1.4;
+            }
+            .class-card-price strong {
+                display: block;
+                font-size: 1rem;
+                color: #552697;
+            }
+
+            /* ── Registration modal ───────────────────────────────────── */
+            .modal-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(20, 10, 40, 0.6);
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem;
+            }
+            .modal-overlay.open {
+                display: flex;
+            }
+            .modal-box {
+                background: #fff;
+                border-radius: 6px;
+                max-width: 520px;
+                width: 100%;
+                max-height: 90vh;
+                overflow-y: auto;
+                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28);
+                position: relative;
+            }
+            .modal-header {
+                background: #552697;
+                color: #fff;
+                padding: 1.5rem 1.8rem 1.2rem;
+                position: sticky;
+                top: 0;
+                z-index: 1;
+            }
+            .modal-eyebrow {
+                font-size: 0.65rem;
+                font-weight: 800;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.3rem;
+            }
+            .modal-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+                color: #fff;
+                line-height: 1.3;
+            }
+            .modal-subtitle {
+                font-size: 0.8rem;
+                color: rgba(255, 255, 255, 0.75);
+                margin-top: 0.3rem;
+            }
+            .modal-close {
+                position: absolute;
+                top: 1rem;
+                right: 1.2rem;
+                background: none;
+                border: none;
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 1.5rem;
+                cursor: pointer;
+                line-height: 1;
+                padding: 0.2rem 0.4rem;
+                border-radius: 3px;
+                transition: color 0.15s ease;
+            }
+            .modal-close:hover { color: #fff; }
+            .modal-body {
+                padding: 1.8rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            /* Member toggle */
+            .member-toggle {
+                display: flex;
+                align-items: center;
+                gap: 0.65rem;
+                background: #f3f1fe;
+                border: 1px solid #c8bde8;
+                border-radius: 4px;
+                padding: 0.8rem 1rem;
+                cursor: pointer;
+            }
+            .member-toggle input[type="checkbox"] {
+                width: 16px;
+                height: 16px;
+                accent-color: #552697;
+                cursor: pointer;
+                flex-shrink: 0;
+            }
+            .member-toggle-label {
+                font-size: 0.85rem;
+                font-weight: 600;
+                color: #2b2b2b;
+                cursor: pointer;
+                flex: 1;
+            }
+            .member-toggle-price {
+                font-size: 0.78rem;
+                color: #552697;
+                font-weight: 700;
+            }
+
+            /* Price display */
+            .modal-price-display {
+                display: flex;
+                align-items: baseline;
+                gap: 0.6rem;
+                padding: 0.8rem 1rem;
+                background: #faf9fe;
+                border: 1px solid #e0d8f8;
+                border-radius: 4px;
+            }
+            .modal-price-label {
+                font-size: 0.8rem;
+                color: #666;
+            }
+            .modal-price-value {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #552697;
+            }
+            .modal-price-sessions {
+                font-size: 0.78rem;
+                color: #888;
+            }
+
+            /* Form fields */
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+            .form-group label {
+                font-size: 0.78rem;
+                font-weight: 700;
+                color: #2b2b2b;
+                letter-spacing: 0.04em;
+            }
+            .form-group input,
+            .form-group select {
+                border: 1px solid #c8bde8;
+                border-radius: 3px;
+                padding: 0.65rem 0.8rem;
+                font-size: 0.9rem;
+                font-family: 'Open Sans', sans-serif;
+                color: #2b2b2b;
+                background: #fff;
+                transition: border-color 0.15s ease;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .form-group input:focus,
+            .form-group select:focus {
+                outline: none;
+                border-color: #552697;
+                box-shadow: 0 0 0 2px rgba(85, 38, 151, 0.12);
+            }
+            .form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+            .card-logo-row {
+                display: flex;
+                gap: 0.4rem;
+                margin-top: 0.2rem;
+            }
+            .card-logo {
+                background: #f0f0f0;
+                border: 1px solid #ddd;
+                border-radius: 3px;
+                padding: 0.15rem 0.5rem;
+                font-size: 0.65rem;
+                font-weight: 800;
+                color: #555;
+                letter-spacing: 0.04em;
+            }
+            .form-divider {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: #888;
+                border-bottom: 1px solid #e8e4f8;
+                padding-bottom: 0.4rem;
+            }
+            .form-note {
+                font-size: 0.75rem;
+                color: #888;
+                line-height: 1.5;
+            }
+            .form-submit-row {
+                display: flex;
+                justify-content: flex-end;
+                gap: 0.75rem;
+                margin-top: 0.4rem;
+            }
+
+            /* Confirmation state */
+            .modal-confirmation {
+                display: none;
+                padding: 2.5rem 1.8rem;
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .modal-confirmation.visible {
+                display: flex;
+            }
+            .confirm-icon {
+                font-size: 3rem;
+                line-height: 1;
+            }
+            .confirm-heading {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #552697;
+            }
+            .confirm-sub {
+                font-size: 0.9rem;
+                color: #555;
+                line-height: 1.6;
+                max-width: 360px;
+            }
+
+            /* ── Responsive ───────────────────────────────────────────── */
+            @media (max-width: 960px) {
+                .classes-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 640px) {
+                .classes-grid {
+                    grid-template-columns: 1fr;
+                }
+                .form-row {
+                    grid-template-columns: 1fr;
+                }
+                .form-submit-row {
+                    flex-direction: column;
+                }
+                .form-submit-row .btn {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- ===================== SKIP LINK ===================== -->
+        <a href="#main-content" class="skip-link">Skip to Content</a>
+
+        <!-- ===================== HEADER / NAV ===================== -->
+        <header class="site-header" id="site-header">
+            <div class="header-top-bar">
+                <a href="donate.html" class="btn btn-donate-top">Donate</a>
+            </div>
+
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <div class="nav-brand">
+                    <a href="index.html" class="nav-logo-link">
+                        <img
+                            src="https://images.squarespace-cdn.com/content/v1/63d876b04840d70bfde917a5/1675130650671-SEGVVZCSW664RX75M47V/AML-white_logo_small.png"
+                            alt="Art Museum of Greater Lafayette"
+                            class="nav-logo-img"
+                        />
+                    </a>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Exhibits</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Current Exhibits</a></li>
+                            <li><a href="#">Upcoming Exhibits</a></li>
+                            <li><a href="#">Past Exhibits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="events.html">Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="events.html#upcoming-events">Upcoming Events</a></li>
+                            <li><a href="events.html#calendar">Events Calendar</a></li>
+                            <li><a href="events.html#past-events">Past Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="classes.html">Classes</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="classes.html">All Classes</a></li>
+                            <li><a href="classes.html#register">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Visit</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Docent Tours</a></li>
+                            <li><a href="#">Gift Shop</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Support</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Become a Member</a></li>
+                            <li><a href="donate.html">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Art League</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our History &amp; Mission</a></li>
+                            <li><a href="#">Staff &amp; Board</a></li>
+                            <li><a href="#">Annual Report</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="donate.html" class="btn btn-donate-nav">Donate</a>
+                    <button
+                        class="hamburger-btn"
+                        id="hamburgerBtn"
+                        aria-label="Open Menu"
+                        aria-expanded="false"
+                        aria-controls="mobileMenu"
+                    >
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-label open-label">Open Menu</span>
+                        <span class="hamburger-label close-label">Close Menu</span>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+                <ul class="mobile-nav-list">
+                    <li><a href="#">Exhibits</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="#">Visit</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="donate.html" class="btn btn-donate-mobile">Donate</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- ===================== MAIN CONTENT ===================== -->
+        <main id="main-content">
+
+            <!-- ===== HERO ===== -->
+            <section class="classes-page-hero" aria-label="Classes page introduction">
+                <p class="classes-eyebrow">Classes &amp; Workshops</p>
+                <h1>Learn, Create, Connect</h1>
+                <p class="classes-intro">
+                    From beginner drawing to advanced oil painting, our classes
+                    and workshops offer something for every skill level and age.
+                    Members receive discounted tuition on all programs.
+                </p>
+            </section>
+
+            <!-- ===== UPCOMING CLASSES ===== -->
+            <section
+                class="classes-section section-container"
+                id="register"
+                aria-label="Upcoming Classes and Workshops"
+            >
+                <div class="section-label-row">
+                    <h2 class="section-heading">Spring &amp; Summer 2026</h2>
+                    <div class="section-rule" aria-hidden="true"></div>
+                </div>
+
+                <!-- Filter tabs -->
+                <div class="class-filters" role="group" aria-label="Filter classes by category">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="drawing">Drawing</button>
+                    <button class="filter-btn" data-filter="painting">Painting</button>
+                    <button class="filter-btn" data-filter="ceramics">Ceramics</button>
+                    <button class="filter-btn" data-filter="photo">Photography</button>
+                    <button class="filter-btn" data-filter="mixed">Mixed Media</button>
+                    <button class="filter-btn" data-filter="history">Art History</button>
+                    <button class="filter-btn" data-filter="youth">Youth</button>
+                </div>
+
+                <div class="classes-grid" id="classesGrid">
+
+                    <!-- 1. Drawing & Sketching -->
+                    <article class="class-card" data-category="drawing">
+                        <div class="class-card-image" role="img" aria-label="Drawing class image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#9998;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-drawing">Drawing</span>
+                                <span class="class-level-badge">Beginner</span>
+                            </div>
+                            <h3 class="class-card-title">Drawing &amp; Sketching Fundamentals</h3>
+                            <div class="class-card-schedule">
+                                <span>Thursdays, April 17 – May 22, 2026</span>
+                                <span>6:00 – 8:00 PM &nbsp;&middot;&nbsp; 6 Sessions</span>
+                            </div>
+                            <p class="class-card-desc">
+                                Build a strong foundation in observational drawing, line quality, shading,
+                                and composition. All materials included. No prior experience needed.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>$85</strong>
+                                    Members &nbsp;/&nbsp; $105 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Drawing &amp; Sketching Fundamentals"
+                                    data-schedule="Thursdays, April 17 – May 22, 2026 · 6:00–8:00 PM · 6 sessions"
+                                    data-member-price="85"
+                                    data-public-price="105"
+                                    data-sessions="6"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 2. Watercolor -->
+                    <article class="class-card" data-category="painting">
+                        <div class="class-card-image" role="img" aria-label="Watercolor class image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127912;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-painting">Painting</span>
+                                <span class="class-level-badge">All Levels</span>
+                            </div>
+                            <h3 class="class-card-title">Watercolor Explorations</h3>
+                            <div class="class-card-schedule">
+                                <span>Saturdays, April 19 – May 17, 2026</span>
+                                <span>10:00 AM – 12:00 PM &nbsp;&middot;&nbsp; 5 Sessions</span>
+                            </div>
+                            <p class="class-card-desc">
+                                Explore wet-on-wet techniques, color mixing, and loose expressive washes.
+                                Beginners and returning students both welcome. Materials list provided.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>$95</strong>
+                                    Members &nbsp;/&nbsp; $115 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Watercolor Explorations"
+                                    data-schedule="Saturdays, April 19 – May 17, 2026 · 10:00 AM–Noon · 5 sessions"
+                                    data-member-price="95"
+                                    data-public-price="115"
+                                    data-sessions="5"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 3. Oil Painting -->
+                    <article class="class-card" data-category="painting">
+                        <div class="class-card-image" role="img" aria-label="Oil painting class image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127912;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-painting">Painting</span>
+                                <span class="class-level-badge">Intermediate</span>
+                            </div>
+                            <h3 class="class-card-title">Oil Painting Workshop</h3>
+                            <div class="class-card-schedule">
+                                <span>Fridays, May 2 – June 6, 2026</span>
+                                <span>1:00 – 4:00 PM &nbsp;&middot;&nbsp; 6 Sessions</span>
+                            </div>
+                            <p class="class-card-desc">
+                                Cover color theory, underpainting, and glazing techniques. Students should
+                                have basic drawing skills. Canvas and brushes provided; oil paints extra.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>$125</strong>
+                                    Members &nbsp;/&nbsp; $150 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Oil Painting Workshop"
+                                    data-schedule="Fridays, May 2 – June 6, 2026 · 1:00–4:00 PM · 6 sessions"
+                                    data-member-price="125"
+                                    data-public-price="150"
+                                    data-sessions="6"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 4. Ceramics -->
+                    <article class="class-card" data-category="ceramics">
+                        <div class="class-card-image" role="img" aria-label="Ceramics class image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127963;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-ceramics">Ceramics</span>
+                                <span class="class-level-badge">All Levels</span>
+                            </div>
+                            <h3 class="class-card-title">Introduction to Hand-Building</h3>
+                            <div class="class-card-schedule">
+                                <span>Wednesdays, April 16 – May 21, 2026</span>
+                                <span>6:30 – 8:30 PM &nbsp;&middot;&nbsp; 6 Sessions</span>
+                            </div>
+                            <p class="class-card-desc">
+                                Learn pinch, coil, and slab construction methods to create functional and
+                                sculptural forms. Clay and two firings included in tuition.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>$110</strong>
+                                    Members &nbsp;/&nbsp; $130 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Introduction to Hand-Building"
+                                    data-schedule="Wednesdays, April 16 – May 21, 2026 · 6:30–8:30 PM · 6 sessions"
+                                    data-member-price="110"
+                                    data-public-price="130"
+                                    data-sessions="6"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 5. Photography -->
+                    <article class="class-card" data-category="photo">
+                        <div class="class-card-image" role="img" aria-label="Photography class image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#128247;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-photo">Photography</span>
+                                <span class="class-level-badge">Beginner</span>
+                            </div>
+                            <h3 class="class-card-title">Photography for Beginners</h3>
+                            <div class="class-card-schedule">
+                                <span>Saturdays, May 10 – May 31, 2026</span>
+                                <span>1:00 – 3:30 PM &nbsp;&middot;&nbsp; 4 Sessions</span>
+                            </div>
+                            <p class="class-card-desc">
+                                Understand exposure, composition, and light using your own camera or
+                                smartphone. Final session includes a short gallery walk and critique.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>$65</strong>
+                                    Members &nbsp;/&nbsp; $80 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Photography for Beginners"
+                                    data-schedule="Saturdays, May 10 – May 31, 2026 · 1:00–3:30 PM · 4 sessions"
+                                    data-member-price="65"
+                                    data-public-price="80"
+                                    data-sessions="4"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 6. Collage & Mixed Media -->
+                    <article class="class-card" data-category="mixed">
+                        <div class="class-card-image" role="img" aria-label="Mixed media class image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#9986;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-mixed">Mixed Media</span>
+                                <span class="class-level-badge">All Levels</span>
+                            </div>
+                            <h3 class="class-card-title">Collage &amp; Mixed Media</h3>
+                            <div class="class-card-schedule">
+                                <span>Tuesdays, April 22 – May 27, 2026</span>
+                                <span>10:00 AM – 12:00 PM &nbsp;&middot;&nbsp; 6 Sessions</span>
+                            </div>
+                            <p class="class-card-desc">
+                                Combine paper, paint, fabric, and found objects to create layered,
+                                expressive works. Each session introduces a new technique or material.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>$85</strong>
+                                    Members &nbsp;/&nbsp; $100 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Collage &amp; Mixed Media"
+                                    data-schedule="Tuesdays, April 22 – May 27, 2026 · 10:00 AM–Noon · 6 sessions"
+                                    data-member-price="85"
+                                    data-public-price="100"
+                                    data-sessions="6"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 7. Art History Lecture -->
+                    <article class="class-card" data-category="history">
+                        <div class="class-card-image" role="img" aria-label="Art history lecture image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#128218;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-history">Art History</span>
+                                <span class="class-level-badge">All Levels</span>
+                            </div>
+                            <h3 class="class-card-title">Lecture: American Impressionism</h3>
+                            <div class="class-card-schedule">
+                                <span>Thursday, May 7, 2026</span>
+                                <span>6:00 – 7:30 PM &nbsp;&middot;&nbsp; Single Session</span>
+                            </div>
+                            <p class="class-card-desc">
+                                A curated lecture exploring the American Impressionist movement with
+                                a focus on works held in Midwestern collections. Q&amp;A to follow.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>Free</strong>
+                                    Members &nbsp;/&nbsp; $5 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Lecture: American Impressionism"
+                                    data-schedule="Thursday, May 7, 2026 · 6:00–7:30 PM · Single session"
+                                    data-member-price="0"
+                                    data-public-price="5"
+                                    data-sessions="1"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 8. Youth Summer Art Camp -->
+                    <article class="class-card" data-category="youth">
+                        <div class="class-card-image" role="img" aria-label="Youth summer camp image placeholder">
+                            <div class="placeholder-media">
+                                <span class="placeholder-icon">&#127775;</span>
+                                <span class="placeholder-label">Class Image</span>
+                            </div>
+                        </div>
+                        <div class="class-card-body">
+                            <div class="class-card-top">
+                                <span class="class-category-pill pill-youth">Youth</span>
+                                <span class="class-level-badge">Ages 8 – 14</span>
+                            </div>
+                            <h3 class="class-card-title">Youth Summer Art Camp</h3>
+                            <div class="class-card-schedule">
+                                <span>July 7 – 11, 2026 (Mon – Fri)</span>
+                                <span>9:00 AM – 12:00 PM &nbsp;&middot;&nbsp; 5-Day Intensive</span>
+                            </div>
+                            <p class="class-card-desc">
+                                A week of drawing, painting, printmaking, and sculpture for young artists.
+                                Each camper takes home a portfolio of finished work. Snacks included.
+                            </p>
+                            <div class="class-card-footer">
+                                <div class="class-card-price">
+                                    <strong>$75</strong>
+                                    Members &nbsp;/&nbsp; $90 Public
+                                </div>
+                                <button
+                                    class="btn btn-primary-dark register-btn"
+                                    data-title="Youth Summer Art Camp"
+                                    data-schedule="July 7–11, 2026 · Mon–Fri · 9:00 AM–Noon · 5-day intensive"
+                                    data-member-price="75"
+                                    data-public-price="90"
+                                    data-sessions="5"
+                                >Register</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+                <!-- end .classes-grid -->
+
+            </section>
+
+            <!-- ===== NEWSLETTER ===== -->
+            <section class="newsletter-banner" aria-label="Newsletter Signup">
+                <div class="newsletter-inner">
+                    <div class="newsletter-text">
+                        <h2 class="newsletter-heading">Stay in the Loop</h2>
+                        <p class="newsletter-sub">
+                            Subscribe to receive updates on new classes, exhibit openings,
+                            and community events at the Art Museum of Greater Lafayette.
+                        </p>
+                    </div>
+                    <form class="newsletter-form" action="#" method="post" aria-label="Newsletter signup form">
+                        <label for="newsletterEmail" class="sr-only">Email Address</label>
+                        <input
+                            type="email"
+                            id="newsletterEmail"
+                            name="email"
+                            class="newsletter-input"
+                            placeholder="Enter your email address"
+                            required
+                            aria-required="true"
+                        />
+                        <button type="submit" class="btn btn-newsletter-submit">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ===================== FOOTER ===================== -->
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-inner">
+                <div class="footer-col footer-col-brand">
+                    <div class="footer-logo-placeholder">
+                        <span class="footer-logo-text">Art Museum of Greater Lafayette</span>
+                    </div>
+                    <address class="footer-address">
+                        <strong>102 S. 10th Street, Lafayette, IN 47905</strong><br />
+                        <a href="tel:7657421128">765-742-1128</a>
+                    </address>
+                    <div class="footer-report">
+                        <strong>Access 2025&rsquo;s Annual Report</strong><br />
+                        <a href="#" class="btn btn-footer-report">Read Report</a>
+                    </div>
+                </div>
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-col-heading">Hours</h4>
+                    <p>Open every day from 11:00 am &ndash; 4:00 pm.</p>
+                    <p>Closed on holidays and between exhibits.</p>
+                </div>
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-col-heading">Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Tax Documents</a></li>
+                        <li><a href="#">Board Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-col-newsletter">
+                    <h4 class="footer-col-heading">Stay Connected</h4>
+                    <form class="footer-newsletter-form" action="#" method="post" aria-label="Footer newsletter form">
+                        <label for="footerEmail" class="sr-only">Email Address</label>
+                        <input type="email" id="footerEmail" name="email" class="footer-newsletter-input" placeholder="Your email address" required />
+                        <button type="submit" class="btn btn-footer-subscribe">Subscribe</button>
+                    </form>
+                    <div class="footer-social" aria-label="Social Media Links">
+                        <p class="footer-social-label">Follow Us:</p>
+                        <div class="footer-social-links">
+                            <a href="#" class="social-link" aria-label="Facebook [placeholder]"><span class="social-icon">f</span></a>
+                            <a href="#" class="social-link" aria-label="Instagram [placeholder]"><span class="social-icon">&#9643;</span></a>
+                            <a href="#" class="social-link" aria-label="Twitter/X [placeholder]"><span class="social-icon">&#120143;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <div class="footer-visitor-info">
+                        <a href="#" class="footer-visitor-link">
+                            <span class="footer-visitor-icon">&#127760;</span>
+                            <em>Your resource for local Visitors&rsquo; Information!</em>
+                        </a>
+                    </div>
+                    <p class="footer-copyright">
+                        &copy; <span id="footerYear"></span> Art Museum of Greater Lafayette. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- ===================== REGISTRATION MODAL ===================== -->
+        <div class="modal-overlay" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <p class="modal-eyebrow">Class Registration</p>
+                    <h2 class="modal-title" id="modalTitle">Loading…</h2>
+                    <p class="modal-subtitle" id="modalSubtitle"></p>
+                    <button class="modal-close" id="modalClose" aria-label="Close registration form">&times;</button>
+                </div>
+
+                <!-- Registration form -->
+                <div class="modal-body" id="modalForm">
+
+                    <!-- Member toggle -->
+                    <label class="member-toggle">
+                        <input type="checkbox" id="memberCheck" />
+                        <span class="member-toggle-label">I am an AMGL member</span>
+                        <span class="member-toggle-price" id="memberSavings"></span>
+                    </label>
+
+                    <!-- Price display -->
+                    <div class="modal-price-display">
+                        <span class="modal-price-label">Tuition:</span>
+                        <span class="modal-price-value" id="priceDisplay">$0</span>
+                        <span class="modal-price-sessions" id="sessionsDisplay"></span>
+                    </div>
+
+                    <!-- Personal info -->
+                    <div class="form-divider">Your Information</div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regFirstName">First Name</label>
+                            <input type="text" id="regFirstName" autocomplete="given-name" placeholder="Jane" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="regLastName">Last Name</label>
+                            <input type="text" id="regLastName" autocomplete="family-name" placeholder="Smith" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email Address</label>
+                        <input type="email" id="regEmail" autocomplete="email" placeholder="jane@example.com" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Phone (optional)</label>
+                        <input type="tel" id="regPhone" autocomplete="tel" placeholder="765-555-0100" />
+                    </div>
+
+                    <!-- Payment info -->
+                    <div class="form-divider">Payment</div>
+
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input
+                            type="text"
+                            id="cardNumber"
+                            inputmode="numeric"
+                            maxlength="19"
+                            placeholder="1234 5678 9012 3456"
+                            autocomplete="cc-number"
+                        />
+                        <div class="card-logo-row" aria-hidden="true">
+                            <span class="card-logo">VISA</span>
+                            <span class="card-logo">MC</span>
+                            <span class="card-logo">AMEX</span>
+                            <span class="card-logo">DISC</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cardExpiry">Expiration</label>
+                            <input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp" />
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCvc">CVV</label>
+                            <input type="text" id="cardCvc" placeholder="123" maxlength="4" autocomplete="cc-csc" />
+                        </div>
+                    </div>
+
+                    <p class="form-note">
+                        &#128274;&nbsp; This is a mockup — no real payment is processed. Your card information is not stored or transmitted.
+                    </p>
+
+                    <div class="form-submit-row">
+                        <button type="button" class="btn btn-outline-dark" id="modalCancel">Cancel</button>
+                        <button type="button" class="btn btn-primary-dark" id="modalSubmit">Complete Registration</button>
+                    </div>
+                </div>
+
+                <!-- Confirmation -->
+                <div class="modal-confirmation" id="modalConfirmation" aria-live="polite">
+                    <div class="confirm-icon">&#10003;</div>
+                    <h3 class="confirm-heading">You&rsquo;re Enrolled!</h3>
+                    <p class="confirm-sub" id="confirmMessage"></p>
+                    <button class="btn btn-primary-dark" id="confirmClose">Done</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/main.js"></script>
+        <script>
+            document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+            /* ── Filter tabs ── */
+            const filterBtns = document.querySelectorAll(".filter-btn");
+            const cards = document.querySelectorAll(".class-card");
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    filterBtns.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    const filter = btn.dataset.filter;
+                    cards.forEach(card => {
+                        card.style.display =
+                            filter === "all" || card.dataset.category === filter
+                                ? ""
+                                : "none";
+                    });
+                });
+            });
+
+            /* ── Registration modal ── */
+            const modal        = document.getElementById("registerModal");
+            const modalTitle   = document.getElementById("modalTitle");
+            const modalSub     = document.getElementById("modalSubtitle");
+            const modalForm    = document.getElementById("modalForm");
+            const modalConfirm = document.getElementById("modalConfirmation");
+            const confirmMsg   = document.getElementById("confirmMessage");
+            const priceDisplay = document.getElementById("priceDisplay");
+            const sessionsDisp = document.getElementById("sessionsDisplay");
+            const memberCheck  = document.getElementById("memberCheck");
+            const memberSavings = document.getElementById("memberSavings");
+
+            let memberPrice = 0;
+            let publicPrice = 0;
+
+            function formatPrice(p) {
+                return p === 0 ? "Free" : "$" + p;
+            }
+
+            function updatePrice() {
+                const isMember = memberCheck.checked;
+                const price = isMember ? memberPrice : publicPrice;
+                priceDisplay.textContent = formatPrice(price);
+                const savings = publicPrice - memberPrice;
+                memberSavings.textContent = savings > 0 ? "Save $" + savings + " as a member" : "";
+            }
+
+            document.querySelectorAll(".register-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    memberPrice = parseInt(btn.dataset.memberPrice, 10);
+                    publicPrice = parseInt(btn.dataset.publicPrice, 10);
+                    const sessions = btn.dataset.sessions;
+
+                    modalTitle.textContent = btn.dataset.title;
+                    modalSub.textContent   = btn.dataset.schedule;
+                    sessionsDisp.textContent = sessions + " session" + (sessions === "1" ? "" : "s");
+
+                    memberCheck.checked = false;
+                    updatePrice();
+
+                    modalForm.style.display = "";
+                    modalConfirm.classList.remove("visible");
+
+                    modal.classList.add("open");
+                    document.body.style.overflow = "hidden";
+                });
+            });
+
+            memberCheck.addEventListener("change", updatePrice);
+
+            /* Card number formatting */
+            document.getElementById("cardNumber").addEventListener("input", e => {
+                let v = e.target.value.replace(/\D/g, "").substring(0, 16);
+                e.target.value = v.replace(/(.{4})/g, "$1 ").trim();
+            });
+
+            /* Expiry formatting */
+            document.getElementById("cardExpiry").addEventListener("input", e => {
+                let v = e.target.value.replace(/\D/g, "").substring(0, 4);
+                if (v.length >= 3) v = v.substring(0, 2) + " / " + v.substring(2);
+                e.target.value = v;
+            });
+
+            function closeModal() {
+                modal.classList.remove("open");
+                document.body.style.overflow = "";
+            }
+
+            document.getElementById("modalClose").addEventListener("click", closeModal);
+            document.getElementById("modalCancel").addEventListener("click", closeModal);
+            document.getElementById("confirmClose").addEventListener("click", closeModal);
+
+            modal.addEventListener("click", e => {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener("keydown", e => {
+                if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+            });
+
+            document.getElementById("modalSubmit").addEventListener("click", () => {
+                const first = document.getElementById("regFirstName").value.trim();
+                const email = document.getElementById("regEmail").value.trim();
+                if (!first || !email) {
+                    alert("Please enter your name and email to continue.");
+                    return;
+                }
+                const isMember = memberCheck.checked;
+                const price    = isMember ? memberPrice : publicPrice;
+                const className = modalTitle.textContent;
+
+                confirmMsg.textContent =
+                    "Thank you, " + first + "! You are registered for "" + className + "". " +
+                    (price === 0
+                        ? "No payment required."
+                        : "A confirmation and receipt for " + formatPrice(price) + " will be sent to " + email + ".");
+
+                modalForm.style.display = "none";
+                modalConfirm.classList.add("visible");
+            });
+        </script>
+    </body>
+</html>

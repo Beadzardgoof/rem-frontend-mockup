@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.artlafayette.org)",
+      "WebFetch(domain:images.squarespace-cdn.com)",
+      "WebFetch(domain:www.si.edu)",
+      "WebFetch(domain:www.artic.edu)",
+      "WebFetch(domain:www.clevelandart.org)",
+      "WebFetch(domain:www.moma.org)",
+      "WebFetch(domain:www.metmuseum.org)",
+      "WebFetch(domain:engage.metmuseum.org)"
+    ]
+  }
+}

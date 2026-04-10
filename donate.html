@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Donate — Art Museum of Greater Lafayette</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <style>
+            /* ── Reset / base ──────────────────────────────────────── */
+            *, *::before, *::after { box-sizing: border-box; }
+
+            /* ── Hero ─────────────────────────────────────────────── */
+            .donate-hero {
+                background-color: #552697;
+                color: #fff;
+                padding: 5rem 1.5rem 4rem;
+                text-align: center;
+            }
+            .donate-hero .eyebrow {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.75rem;
+            }
+            .donate-hero h1 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(2.2rem, 5vw, 3.4rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 1.1rem;
+                line-height: 1.15;
+            }
+            .donate-hero .hero-sub {
+                max-width: 600px;
+                margin: 0 auto 2rem;
+                font-size: 1rem;
+                color: rgba(255,255,255,0.85);
+                line-height: 1.75;
+            }
+            .donate-hero .hero-cta {
+                display: inline-block;
+                background: #ffc03d;
+                color: #2b2b2b;
+                font-size: 0.85rem;
+                font-weight: 800;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 0.85rem 2.2rem;
+                border-radius: 3px;
+                text-decoration: none;
+                transition: background 0.2s ease;
+            }
+            .donate-hero .hero-cta:hover { background: #e6a800; }
+
+            /* ── Mission strip ─────────────────────────────────────── */
+            .mission-strip {
+                background: #faf9fe;
+                border-top: 4px solid #ffc03d;
+                border-bottom: 1px solid #e8e4f8;
+                padding: 3rem 1.5rem;
+            }
+            .mission-strip-inner {
+                max-width: 860px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .mission-label {
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #552697;
+                margin-bottom: 1rem;
+            }
+            .mission-quote {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+                font-weight: 400;
+                font-style: italic;
+                color: #2b2b2b;
+                line-height: 1.65;
+                margin-bottom: 1.5rem;
+            }
+            .mission-quote strong {
+                font-style: normal;
+                font-weight: 700;
+                color: #552697;
+            }
+            .mission-founding {
+                font-size: 0.85rem;
+                color: #666;
+                line-height: 1.6;
+            }
+
+            /* ── Stats row ─────────────────────────────────────────── */
+            .stats-row {
+                background: #552697;
+                padding: 2.5rem 1.5rem;
+            }
+            .stats-inner {
+                max-width: 900px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                text-align: center;
+            }
+            .stat-item {}
+            .stat-number {
+                font-family: 'Playfair Display', serif;
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: #ffc03d;
+                line-height: 1;
+                margin-bottom: 0.35rem;
+            }
+            .stat-label {
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: rgba(255,255,255,0.8);
+                letter-spacing: 0.04em;
+                line-height: 1.4;
+            }
+
+            /* ── Why donate ────────────────────────────────────────── */
+            .why-section {
+                padding: 4rem 1.5rem;
+                background: #fff;
+            }
+            .why-inner {
+                max-width: 960px;
+                margin: 0 auto;
+            }
+            .section-label-sm {
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #552697;
+                margin-bottom: 0.5rem;
+            }
+            .why-heading {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.5rem, 3vw, 2.2rem);
+                font-weight: 700;
+                color: #2b2b2b;
+                margin-bottom: 2.5rem;
+                max-width: 560px;
+            }
+            .why-pillars {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            .why-pillar {
+                border-top: 3px solid #ffc03d;
+                padding-top: 1.2rem;
+            }
+            .why-pillar-rule {
+                width: 32px;
+                height: 3px;
+                background: #ffc03d;
+                margin-bottom: 1rem;
+            }
+            .why-pillar-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #552697;
+                margin-bottom: 0.6rem;
+            }
+            .why-pillar-text {
+                font-size: 0.88rem;
+                color: #444;
+                line-height: 1.7;
+            }
+
+            /* ── Fund drive progress bar ───────────────────────────── */
+            .fund-drive {
+                background: #f3f1fe;
+                border: 1px solid #c8bde8;
+                border-radius: 6px;
+                padding: 1.8rem 2rem;
+                margin-bottom: 2.5rem;
+            }
+            .fund-drive-header {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                gap: 1rem;
+                flex-wrap: wrap;
+                margin-bottom: 0.75rem;
+            }
+            .fund-drive-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.05rem;
+                font-weight: 700;
+                color: #552697;
+            }
+            .fund-drive-amounts {
+                font-size: 0.82rem;
+                color: #555;
+            }
+            .fund-drive-amounts strong {
+                color: #552697;
+                font-size: 1rem;
+            }
+            .progress-track {
+                background: #ddd8f5;
+                border-radius: 99px;
+                height: 14px;
+                overflow: hidden;
+                margin-bottom: 0.5rem;
+            }
+            .progress-fill {
+                height: 100%;
+                background: linear-gradient(90deg, #552697, #7b3fc4);
+                border-radius: 99px;
+                width: 56%;
+                transition: width 1s ease;
+            }
+            .fund-drive-meta {
+                font-size: 0.78rem;
+                color: #888;
+            }
+
+            /* ── Donation form ─────────────────────────────────────── */
+            .donate-section {
+                padding: 4rem 1.5rem;
+                background: #fff;
+                border-top: 1px solid #e8e4f8;
+            }
+            .donate-layout {
+                max-width: 960px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 420px;
+                gap: 4rem;
+                align-items: start;
+            }
+
+            /* Left: context */
+            .donate-context {}
+            .donate-context-heading {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #2b2b2b;
+                margin-bottom: 1rem;
+                line-height: 1.25;
+            }
+            .donate-context-body {
+                font-size: 0.9rem;
+                color: #555;
+                line-height: 1.75;
+                margin-bottom: 1.5rem;
+            }
+            .impact-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .impact-list li {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                font-size: 0.875rem;
+                color: #2b2b2b;
+                line-height: 1.5;
+            }
+            .impact-list li::before {
+                content: '–';
+                color: #552697;
+                font-size: 0.85rem;
+                margin-top: 1px;
+                flex-shrink: 0;
+            }
+            .accreditation-note {
+                margin-top: 2rem;
+                padding: 1rem 1.2rem;
+                background: #faf9fe;
+                border-left: 3px solid #552697;
+                font-size: 0.82rem;
+                color: #555;
+                line-height: 1.6;
+            }
+            .accreditation-note strong { color: #2b2b2b; }
+
+            /* Right: form card */
+            .donate-form-card {
+                background: #fff;
+                border: 1px solid #c8bde8;
+                border-radius: 6px;
+                overflow: hidden;
+                box-shadow: 0 4px 24px rgba(85,38,151,0.1);
+                position: sticky;
+                top: 100px;
+            }
+            .form-card-header {
+                background: #552697;
+                padding: 1.4rem 1.8rem 1.2rem;
+            }
+            .form-card-header p {
+                font-size: 0.68rem;
+                font-weight: 800;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.25rem;
+            }
+            .form-card-header h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: #fff;
+                line-height: 1.2;
+            }
+            .form-card-body {
+                padding: 1.6rem 1.8rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.1rem;
+            }
+
+            /* Frequency toggle */
+            .freq-toggle {
+                display: flex;
+                border: 1px solid #c8bde8;
+                border-radius: 3px;
+                overflow: hidden;
+            }
+            .freq-btn {
+                flex: 1;
+                padding: 0.55rem 0.5rem;
+                background: none;
+                border: none;
+                font-size: 0.8rem;
+                font-weight: 700;
+                color: #552697;
+                cursor: pointer;
+                transition: background 0.15s ease, color 0.15s ease;
+            }
+            .freq-btn.active {
+                background: #552697;
+                color: #fff;
+            }
+            .freq-btn:not(.active):hover { background: #f3f1fe; }
+
+            /* Amount presets */
+            .amount-label {
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                color: #2b2b2b;
+                margin-bottom: 0.4rem;
+            }
+            .amount-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+            .amount-btn {
+                padding: 0.65rem 0.4rem;
+                background: #faf9fe;
+                border: 1px solid #c8bde8;
+                border-radius: 3px;
+                font-size: 0.9rem;
+                font-weight: 700;
+                color: #552697;
+                cursor: pointer;
+                transition: background 0.15s ease, border-color 0.15s ease;
+            }
+            .amount-btn:hover { background: #f0eafd; }
+            .amount-btn.selected {
+                background: #552697;
+                color: #fff;
+                border-color: #552697;
+            }
+            .amount-btn small {
+                display: block;
+                font-size: 0.6rem;
+                font-weight: 400;
+                opacity: 0.75;
+                margin-top: 1px;
+                line-height: 1.2;
+            }
+            .amount-btn.selected small { opacity: 0.85; }
+
+            /* Custom amount */
+            .custom-amount-wrap {
+                position: relative;
+            }
+            .custom-amount-wrap .currency {
+                position: absolute;
+                left: 0.75rem;
+                top: 50%;
+                transform: translateY(-50%);
+                font-weight: 700;
+                color: #552697;
+                font-size: 1rem;
+                pointer-events: none;
+            }
+            .custom-amount-input {
+                width: 100%;
+                border: 1px solid #c8bde8;
+                border-radius: 3px;
+                padding: 0.65rem 0.75rem 0.65rem 1.6rem;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #2b2b2b;
+                font-family: 'Open Sans', sans-serif;
+                transition: border-color 0.15s ease;
+            }
+            .custom-amount-input:focus {
+                outline: none;
+                border-color: #552697;
+                box-shadow: 0 0 0 2px rgba(85,38,151,0.12);
+            }
+            .custom-amount-input::placeholder { color: #bbb; font-weight: 400; }
+
+            /* Form fields */
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .form-group label {
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: #2b2b2b;
+                letter-spacing: 0.03em;
+            }
+            .form-group input {
+                border: 1px solid #c8bde8;
+                border-radius: 3px;
+                padding: 0.62rem 0.8rem;
+                font-size: 0.9rem;
+                font-family: 'Open Sans', sans-serif;
+                color: #2b2b2b;
+                background: #fff;
+                transition: border-color 0.15s ease;
+                width: 100%;
+            }
+            .form-group input:focus {
+                outline: none;
+                border-color: #552697;
+                box-shadow: 0 0 0 2px rgba(85,38,151,0.12);
+            }
+            .form-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.65rem;
+            }
+            .form-divider {
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: #999;
+                padding-bottom: 0.35rem;
+                border-bottom: 1px solid #e8e4f8;
+            }
+            .card-logos {
+                display: flex;
+                gap: 0.4rem;
+                margin-top: 0.2rem;
+            }
+            .card-logo-tag {
+                background: #f0f0f0;
+                border: 1px solid #ddd;
+                border-radius: 2px;
+                padding: 0.12rem 0.45rem;
+                font-size: 0.6rem;
+                font-weight: 800;
+                color: #555;
+            }
+            .secure-note {
+                font-size: 0.73rem;
+                color: #999;
+                line-height: 1.5;
+                text-align: center;
+            }
+            .donate-submit-btn {
+                width: 100%;
+                background: #ffc03d;
+                color: #2b2b2b;
+                border: none;
+                border-radius: 3px;
+                padding: 0.95rem 1rem;
+                font-size: 0.88rem;
+                font-weight: 800;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: background 0.2s ease;
+                font-family: 'Open Sans', sans-serif;
+            }
+            .donate-submit-btn:hover { background: #e6a800; }
+            .donate-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+            /* Confirmation */
+            .donate-confirmation {
+                display: none;
+                padding: 2.5rem 1.8rem;
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .donate-confirmation.visible { display: flex; }
+            .confirm-rule {
+                width: 48px;
+                height: 3px;
+                background: #ffc03d;
+            }
+            .confirm-heading {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #552697;
+            }
+            .confirm-body {
+                font-size: 0.88rem;
+                color: #555;
+                line-height: 1.7;
+                max-width: 300px;
+            }
+
+            /* ── Membership ladder ─────────────────────────────────── */
+            .member-section {
+                padding: 4rem 1.5rem;
+                background: #faf9fe;
+                border-top: 1px solid #e8e4f8;
+            }
+            .member-inner {
+                max-width: 960px;
+                margin: 0 auto;
+            }
+            .member-intro {
+                max-width: 580px;
+                margin-bottom: 2.5rem;
+            }
+            .member-intro h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.4rem, 2.5vw, 2rem);
+                font-weight: 700;
+                color: #2b2b2b;
+                margin-bottom: 0.6rem;
+            }
+            .member-intro p {
+                font-size: 0.9rem;
+                color: #555;
+                line-height: 1.7;
+            }
+            .member-tiers {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.2rem;
+            }
+            .tier-card {
+                background: #fff;
+                border: 1px solid #ddd8f5;
+                border-radius: 4px;
+                padding: 1.4rem 1.3rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+            .tier-name {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: #2b2b2b;
+            }
+            .tier-price {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #552697;
+                line-height: 1;
+            }
+            .tier-price span {
+                font-size: 0.8rem;
+                font-weight: 400;
+                color: #888;
+            }
+            .tier-benefits {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+                font-size: 0.82rem;
+                color: #444;
+                line-height: 1.4;
+                flex: 1;
+            }
+            .tier-benefits li::before {
+                content: '✓ ';
+                color: #552697;
+                font-weight: 700;
+            }
+            .tier-cta {
+                display: block;
+                text-align: center;
+                background: #552697;
+                color: #fff;
+                font-size: 0.78rem;
+                font-weight: 800;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 0.65rem 1rem;
+                border-radius: 3px;
+                text-decoration: none;
+                margin-top: 0.4rem;
+                transition: background 0.15s ease;
+            }
+            .tier-cta:hover { background: #3d1a72; }
+            .member-all-link {
+                text-align: center;
+                margin-top: 2rem;
+                font-size: 0.85rem;
+                color: #555;
+            }
+            .member-all-link a { color: #552697; font-weight: 700; text-decoration: underline; }
+
+            /* ── Responsive ────────────────────────────────────────── */
+            @media (max-width: 900px) {
+                .donate-layout {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+                .donate-form-card {
+                    position: static;
+                }
+                .stats-inner {
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2rem;
+                }
+                .why-pillars {
+                    grid-template-columns: 1fr;
+                    gap: 1.5rem;
+                }
+                .member-tiers {
+                    grid-template-columns: 1fr;
+                }
+            }
+            @media (max-width: 500px) {
+                .amount-grid { grid-template-columns: repeat(2, 1fr); }
+                .form-row { grid-template-columns: 1fr; }
+            }
+        </style>
+    </head>
+    <body>
+
+        <a href="#main-content" class="skip-link">Skip to Content</a>
+
+        <!-- ======== HEADER / NAV ======== -->
+        <header class="site-header" id="site-header">
+            <div class="header-top-bar">
+                <a href="donate.html" class="btn btn-donate-top">Donate</a>
+            </div>
+
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <div class="nav-brand">
+                    <a href="index.html" class="nav-logo-link">
+                        <img
+                            src="https://images.squarespace-cdn.com/content/v1/63d876b04840d70bfde917a5/1675130650671-SEGVVZCSW664RX75M47V/AML-white_logo_small.png"
+                            alt="Art Museum of Greater Lafayette"
+                            class="nav-logo-img"
+                        />
+                    </a>
+                </div>
+
+                <ul class="nav-links" id="navLinks">
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Exhibits</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Current Exhibits</a></li>
+                            <li><a href="#">Upcoming Exhibits</a></li>
+                            <li><a href="#">Past Exhibits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="events.html">Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="events.html#upcoming-events">Upcoming Events</a></li>
+                            <li><a href="events.html#calendar">Events Calendar</a></li>
+                            <li><a href="events.html#past-events">Past Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="classes.html">Classes</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="classes.html">All Classes</a></li>
+                            <li><a href="classes.html#register">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Visit</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Docent Tours</a></li>
+                            <li><a href="#">Gift Shop</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">Support</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Become a Member</a></li>
+                            <li><a href="donate.html">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Art League</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="#">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our History &amp; Mission</a></li>
+                            <li><a href="#">Staff &amp; Board</a></li>
+                            <li><a href="#">Annual Report</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="donate.html" class="btn btn-donate-nav">Donate</a>
+                    <button
+                        class="hamburger-btn"
+                        id="hamburgerBtn"
+                        aria-label="Open Menu"
+                        aria-expanded="false"
+                        aria-controls="mobileMenu"
+                    >
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-label open-label">Open Menu</span>
+                        <span class="hamburger-label close-label">Close Menu</span>
+                    </button>
+                </div>
+            </nav>
+
+            <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+                <ul class="mobile-nav-list">
+                    <li><a href="#">Exhibits</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="#">Visit</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="donate.html" class="btn btn-donate-mobile">Donate</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main id="main-content">
+
+            <!-- ======== HERO ======== -->
+            <section class="donate-hero" aria-label="Donate to the Art Museum of Greater Lafayette">
+                <p class="eyebrow">Support the Arts</p>
+                <h1>Your Gift Keeps Art<br>Alive in Lafayette</h1>
+                <p class="hero-sub">
+                    For over 115 years, the Art Museum of Greater Lafayette has been a free,
+                    community-supported institution. Every dollar you give directly funds exhibitions,
+                    education programs, and open doors for everyone.
+                </p>
+                <a href="#donate-form" class="hero-cta">Make a Gift Today</a>
+            </section>
+
+            <!-- ======== MISSION ======== -->
+            <section class="mission-strip" aria-label="Our Mission">
+                <div class="mission-strip-inner">
+                    <p class="mission-label">Our Mission</p>
+                    <p class="mission-quote">
+                        &ldquo;To celebrate the power of art to
+                        <strong>inspire, instruct, challenge,</strong>
+                        and build community through collections, exhibitions,
+                        events, and educational and cultural programs.&rdquo;
+                    </p>
+                    <p class="mission-founding">
+                        Founded April 14, 1909 &nbsp;&middot;&nbsp; 501(c)(3) Charitable Organization &nbsp;&middot;&nbsp;
+                        American Alliance of Museums Accredited since 1982 &nbsp;&middot;&nbsp;
+                        The only accredited museum in Northwest Indiana
+                    </p>
+                </div>
+            </section>
+
+            <!-- ======== STATS ======== -->
+            <div class="stats-row" aria-label="Museum at a glance">
+                <div class="stats-inner">
+                    <div class="stat-item">
+                        <div class="stat-number">115+</div>
+                        <div class="stat-label">Years serving<br>the community</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">Admission every<br>day we are open</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Of our annual budget<br>funded by donors</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1,600+</div>
+                        <div class="stat-label">Partner museums<br>via NARM &amp; ROAM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ======== WHY DONATE ======== -->
+            <section class="why-section" aria-label="Why your donation matters">
+                <div class="why-inner">
+                    <p class="section-label-sm">Why It Matters</p>
+                    <h2 class="why-heading">Every gift directly funds what happens inside these walls.</h2>
+                    <div class="why-pillars">
+                        <div class="why-pillar">
+                            <div class="why-pillar-rule" aria-hidden="true"></div>
+                            <h3 class="why-pillar-title">Exhibitions</h3>
+                            <p class="why-pillar-text">
+                                Your support brings rotating exhibitions — from regional artists to nationally
+                                recognized collections — to our galleries, free of charge to every visitor.
+                            </p>
+                        </div>
+                        <div class="why-pillar">
+                            <div class="why-pillar-rule" aria-hidden="true"></div>
+                            <h3 class="why-pillar-title">Education &amp; Youth Programs</h3>
+                            <p class="why-pillar-text">
+                                From youth art camps to adult workshops and school outreach, gifts fund
+                                the classes and programs that put art in the hands of the next generation.
+                            </p>
+                        </div>
+                        <div class="why-pillar">
+                            <div class="why-pillar-rule" aria-hidden="true"></div>
+                            <h3 class="why-pillar-title">Free &amp; Open to All</h3>
+                            <p class="why-pillar-text">
+                                We believe art belongs to everyone. Donor support is what makes it possible
+                                to keep our doors open — and our admission free — every day we are open.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ======== DONATION FORM ======== -->
+            <section class="donate-section" id="donate-form" aria-label="Make a donation">
+                <div class="donate-layout">
+
+                    <!-- Left: context + fund drive bar -->
+                    <div class="donate-context">
+                        <p class="section-label-sm">Make a Gift</p>
+                        <h2 class="donate-context-heading">Join the community keeping this museum free.</h2>
+                        <p class="donate-context-body">
+                            The Art Museum of Greater Lafayette operates as a 501(c)(3) nonprofit.
+                            Your charitable gift is tax-deductible to the fullest extent permitted by law
+                            and goes directly toward exhibitions, educational programs, and community events.
+                        </p>
+
+                        <!-- Fund drive progress bar -->
+                        <div class="fund-drive" aria-label="Spring Fund Drive progress">
+                            <div class="fund-drive-header">
+                                <span class="fund-drive-title">Spring Fund Drive 2026</span>
+                                <span class="fund-drive-amounts">
+                                    <strong>$8,450</strong> raised of $15,000 goal
+                                </span>
+                            </div>
+                            <div class="progress-track" role="progressbar" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100" aria-label="56% funded">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <p class="fund-drive-meta">143 donors &nbsp;&middot;&nbsp; 26 days remaining</p>
+                        </div>
+
+                        <ul class="impact-list" aria-label="What your gift funds">
+                            <li><strong>$25</strong> &nbsp;— covers art supplies for one student workshop session</li>
+                            <li><strong>$50</strong> &nbsp;— funds a school group gallery visit for 15 students</li>
+                            <li><strong>$100</strong> &nbsp;— sponsors one youth art camp participant</li>
+                            <li><strong>$250</strong> &nbsp;— helps mount and frame works for a new exhibition</li>
+                            <li><strong>$500</strong> &nbsp;— sponsors a free community event at the museum</li>
+                        </ul>
+
+                        <div class="accreditation-note">
+                            <strong>Tax ID: 35-6018385</strong> &mdash; The Art Museum of Greater Lafayette is an
+                            IRS-designated 501(c)(3) charitable organization. All donations are tax-deductible
+                            to the extent allowed by law. A receipt will be emailed upon completion.
+                        </div>
+                    </div>
+
+                    <!-- Right: form card -->
+                    <div class="donate-form-card" id="donateCard">
+                        <div class="form-card-header">
+                            <p>Secure Donation</p>
+                            <h2>Choose Your Gift</h2>
+                        </div>
+
+                        <div class="form-card-body" id="donateFormBody">
+
+                            <!-- Frequency -->
+                            <div>
+                                <p class="amount-label">Frequency</p>
+                                <div class="freq-toggle" role="group" aria-label="Donation frequency">
+                                    <button class="freq-btn active" data-freq="one-time">One-Time</button>
+                                    <button class="freq-btn" data-freq="monthly">Monthly</button>
+                                </div>
+                            </div>
+
+                            <!-- Preset amounts -->
+                            <div>
+                                <p class="amount-label">Amount</p>
+                                <div class="amount-grid">
+                                    <button class="amount-btn" data-amount="25">$25<small>supplies</small></button>
+                                    <button class="amount-btn selected" data-amount="50">$50<small>school visit</small></button>
+                                    <button class="amount-btn" data-amount="100">$100<small>camp scholarship</small></button>
+                                    <button class="amount-btn" data-amount="250">$250<small>exhibition</small></button>
+                                    <button class="amount-btn" data-amount="500">$500<small>sponsor event</small></button>
+                                    <button class="amount-btn" data-amount="custom">Other</button>
+                                </div>
+                            </div>
+
+                            <!-- Custom amount (hidden by default) -->
+                            <div id="customAmountWrap" style="display:none;">
+                                <p class="amount-label">Enter Amount</p>
+                                <div class="custom-amount-wrap">
+                                    <span class="currency">$</span>
+                                    <input
+                                        type="number"
+                                        id="customAmount"
+                                        class="custom-amount-input"
+                                        min="1"
+                                        placeholder="0.00"
+                                        inputmode="decimal"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="form-divider">Your Information</div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="donorFirst">First Name</label>
+                                    <input type="text" id="donorFirst" autocomplete="given-name" placeholder="Jane" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="donorLast">Last Name</label>
+                                    <input type="text" id="donorLast" autocomplete="family-name" placeholder="Smith" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="donorEmail">Email Address</label>
+                                <input type="email" id="donorEmail" autocomplete="email" placeholder="jane@example.com" />
+                            </div>
+
+                            <div class="form-divider">Payment</div>
+
+                            <div class="form-group">
+                                <label for="donorCard">Card Number</label>
+                                <input type="text" id="donorCard" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" autocomplete="cc-number" />
+                                <div class="card-logos" aria-hidden="true">
+                                    <span class="card-logo-tag">VISA</span>
+                                    <span class="card-logo-tag">MC</span>
+                                    <span class="card-logo-tag">AMEX</span>
+                                    <span class="card-logo-tag">DISC</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="donorExpiry">Expiration</label>
+                                    <input type="text" id="donorExpiry" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="donorCvc">CVV</label>
+                                    <input type="text" id="donorCvc" placeholder="123" maxlength="4" autocomplete="cc-csc" />
+                                </div>
+                            </div>
+
+                            <p class="secure-note">
+                                Mockup only — no payment is processed or stored.
+                            </p>
+
+                            <button class="donate-submit-btn" id="donateSubmit">
+                                Donate $50
+                            </button>
+                        </div>
+
+                        <!-- Confirmation -->
+                        <div class="donate-confirmation" id="donateConfirmation" aria-live="polite">
+                            <div class="confirm-rule" aria-hidden="true"></div>
+                            <h3 class="confirm-heading">Thank You.</h3>
+                            <p class="confirm-body" id="donateConfirmBody"></p>
+                            <a href="donate.html" class="btn btn-primary-dark">Make Another Gift</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ======== MEMBERSHIP LADDER ======== -->
+            <section class="member-section" aria-label="Membership levels">
+                <div class="member-inner">
+                    <div class="member-intro">
+                        <p class="section-label-sm">Membership</p>
+                        <h2>Sustain the museum through annual membership.</h2>
+                        <p>
+                            Membership is a meaningful way to invest in the museum's mission throughout
+                            the year. Members receive access to exhibitions, classes, and programs while
+                            directly supporting the institution's ability to remain free and open to all.
+                        </p>
+                    </div>
+
+                    <div class="member-tiers">
+
+                        <div class="tier-card">
+                            <span class="tier-name">Individual</span>
+                            <div class="tier-price">$40 <span>/ year</span></div>
+                            <ul class="tier-benefits">
+                                <li>Museum Mondays weekly newsletter</li>
+                                <li>Invitations to exhibition openings</li>
+                                <li>10% discount on classes, workshops, and shop</li>
+                            </ul>
+                            <a href="#" class="tier-cta">Learn about membership</a>
+                        </div>
+
+                        <div class="tier-card">
+                            <span class="tier-name">Friend</span>
+                            <div class="tier-price">$150 <span>/ year</span></div>
+                            <ul class="tier-benefits">
+                                <li>All Individual benefits</li>
+                                <li>Reciprocal access to 1,600+ museums via NARM &amp; ROAM</li>
+                                <li>Invitations to donor recognition events</li>
+                            </ul>
+                            <a href="#" class="tier-cta">Learn about membership</a>
+                        </div>
+
+                        <div class="tier-card">
+                            <span class="tier-name">Patron</span>
+                            <div class="tier-price">$500 <span>/ year</span></div>
+                            <ul class="tier-benefits">
+                                <li>All Friend benefits</li>
+                                <li>Discounted use of the Shook Gallery</li>
+                                <li>Priority registration for classes and programs</li>
+                                <li>Recognition in the annual report</li>
+                            </ul>
+                            <a href="#" class="tier-cta">Learn about membership</a>
+                        </div>
+
+                    </div>
+
+                    <p class="member-all-link">
+                        Additional levels — including the Second Century Club, Director's Club, and Founder's Club — are available.
+                        <a href="#">View all membership levels and benefits.</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- ======== NEWSLETTER ======== -->
+            <section class="newsletter-banner" aria-label="Newsletter Signup">
+                <div class="newsletter-inner">
+                    <div class="newsletter-text">
+                        <h2 class="newsletter-heading">Stay Connected</h2>
+                        <p class="newsletter-sub">
+                            Subscribe to the Museum Mondays newsletter for exhibit updates,
+                            upcoming events, and ways to get involved.
+                        </p>
+                    </div>
+                    <form class="newsletter-form" action="#" method="post" aria-label="Newsletter signup form">
+                        <label for="newsletterEmail" class="sr-only">Email Address</label>
+                        <input type="email" id="newsletterEmail" name="email" class="newsletter-input" placeholder="Enter your email address" required aria-required="true" />
+                        <button type="submit" class="btn btn-newsletter-submit">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ======== FOOTER ======== -->
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-inner">
+                <div class="footer-col footer-col-brand">
+                    <div class="footer-logo-placeholder">
+                        <span class="footer-logo-text">Art Museum of Greater Lafayette</span>
+                    </div>
+                    <address class="footer-address">
+                        <strong>102 S. 10th Street, Lafayette, IN 47905</strong><br />
+                        <a href="tel:7657421128">765-742-1128</a>
+                    </address>
+                    <div class="footer-report">
+                        <strong>Access 2025&rsquo;s Annual Report</strong><br />
+                        <a href="#" class="btn btn-footer-report">Read Report</a>
+                    </div>
+                </div>
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-col-heading">Hours</h4>
+                    <p>Open every day from 11:00 am &ndash; 4:00 pm.</p>
+                    <p>Closed on holidays and between exhibits.</p>
+                </div>
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-col-heading">Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Tax Documents</a></li>
+                        <li><a href="#">Board Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-col-newsletter">
+                    <h4 class="footer-col-heading">Stay Connected</h4>
+                    <form class="footer-newsletter-form" action="#" method="post" aria-label="Footer newsletter form">
+                        <label for="footerEmail" class="sr-only">Email Address</label>
+                        <input type="email" id="footerEmail" name="email" class="footer-newsletter-input" placeholder="Your email address" required />
+                        <button type="submit" class="btn btn-footer-subscribe">Subscribe</button>
+                    </form>
+                    <div class="footer-social" aria-label="Social Media Links">
+                        <p class="footer-social-label">Follow Us:</p>
+                        <div class="footer-social-links">
+                            <a href="#" class="social-link" aria-label="Facebook"><span class="social-icon">f</span></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><span class="social-icon">&#9643;</span></a>
+                            <a href="#" class="social-link" aria-label="Twitter/X"><span class="social-icon">&#120143;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <div class="footer-visitor-info">
+                        <a href="#" class="footer-visitor-link">
+                            <span class="footer-visitor-icon">&#127760;</span>
+                            <em>Your resource for local Visitors&rsquo; Information!</em>
+                        </a>
+                    </div>
+                    <p class="footer-copyright">
+                        &copy; <span id="footerYear"></span> Art Museum of Greater Lafayette. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <script>
+            document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+            /* ── Frequency toggle ── */
+            const freqBtns = document.querySelectorAll(".freq-btn");
+            let currentFreq = "one-time";
+            freqBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    freqBtns.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    currentFreq = btn.dataset.freq;
+                    updateSubmitLabel();
+                });
+            });
+
+            /* ── Amount selection ── */
+            const amountBtns = document.querySelectorAll(".amount-btn");
+            const customWrap  = document.getElementById("customAmountWrap");
+            const customInput = document.getElementById("customAmount");
+            const submitBtn   = document.getElementById("donateSubmit");
+            let selectedAmount = 50;
+
+            function updateSubmitLabel() {
+                const suffix = currentFreq === "monthly" ? "/mo" : "";
+                const label  = selectedAmount === "custom"
+                    ? (customInput.value ? "$" + parseFloat(customInput.value).toFixed(2) : "Custom Amount")
+                    : "$" + selectedAmount;
+                submitBtn.textContent = "Donate " + label + suffix;
+            }
+
+            amountBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    amountBtns.forEach(b => b.classList.remove("selected"));
+                    btn.classList.add("selected");
+                    const val = btn.dataset.amount;
+                    if (val === "custom") {
+                        selectedAmount = "custom";
+                        customWrap.style.display = "";
+                        customInput.focus();
+                    } else {
+                        selectedAmount = parseInt(val, 10);
+                        customWrap.style.display = "none";
+                    }
+                    updateSubmitLabel();
+                });
+            });
+
+            customInput.addEventListener("input", updateSubmitLabel);
+
+            /* ── Card formatting ── */
+            document.getElementById("donorCard").addEventListener("input", e => {
+                let v = e.target.value.replace(/\D/g, "").substring(0, 16);
+                e.target.value = v.replace(/(.{4})/g, "$1 ").trim();
+                updateSubmitLabel();
+            });
+            document.getElementById("donorExpiry").addEventListener("input", e => {
+                let v = e.target.value.replace(/\D/g, "").substring(0, 4);
+                if (v.length >= 3) v = v.substring(0, 2) + " / " + v.substring(2);
+                e.target.value = v;
+            });
+
+            /* ── Submit ── */
+            document.getElementById("donateSubmit").addEventListener("click", () => {
+                const first = document.getElementById("donorFirst").value.trim();
+                const email = document.getElementById("donorEmail").value.trim();
+                if (!first || !email) {
+                    alert("Please enter your name and email to continue.");
+                    return;
+                }
+                const amt = selectedAmount === "custom"
+                    ? (parseFloat(customInput.value) || 0)
+                    : selectedAmount;
+                if (amt <= 0) { alert("Please enter a valid amount."); return; }
+
+                const fmtAmt = "$" + amt.toFixed(2).replace(/\.00$/, "");
+                const isMonthly = currentFreq === "monthly";
+
+                document.getElementById("donateConfirmBody").textContent =
+                    "Thank you, " + first + "! Your " +
+                    (isMonthly ? "monthly gift of " + fmtAmt : "gift of " + fmtAmt) +
+                    " supports free admission, exhibitions, and education programs at the Art Museum of Greater Lafayette." +
+                    " A tax receipt will be sent to " + email + ".";
+
+                document.getElementById("donateFormBody").style.display = "none";
+                document.getElementById("donateConfirmation").classList.add("visible");
+
+                /* Animate progress bar forward */
+                document.querySelector(".progress-fill").style.width = "62%";
+            });
+        </script>
+    </body>
+</html>

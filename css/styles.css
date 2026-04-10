@@ -452,6 +452,16 @@ address {
     line-height: 1.2;
 }
 
+.nav-logo-img {
+    height: 46px;
+    width: auto;
+    display: block;
+    transition: opacity var(--transition-fast);
+}
+.nav-logo-img:hover {
+    opacity: 0.85;
+}
+
 .logo-initials {
     font-family: var(--font-serif);
     font-size: 1.1rem;
