@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>About — Art Museum of Greater Lafayette</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+
+            /* ── Hero ─────────────────────────────────────────────── */
+            .about-hero {
+                background-color: #2b2b2b;
+                color: #fff;
+                padding: 5rem 1.5rem 4rem;
+                text-align: center;
+            }
+            .about-hero .eyebrow {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.75rem;
+            }
+            .about-hero h1 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(2.2rem, 5vw, 3.4rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 1.1rem;
+                line-height: 1.15;
+            }
+            .about-hero .hero-sub {
+                max-width: 600px;
+                margin: 0 auto;
+                font-size: 1rem;
+                color: rgba(255,255,255,0.8);
+                line-height: 1.75;
+            }
+
+            /* ── Mission strip ─────────────────────────────────────── */
+            .mission-strip {
+                background: #faf9fe;
+                border-top: 4px solid #ffc03d;
+                border-bottom: 1px solid #e8e4f8;
+                padding: 3rem 1.5rem;
+            }
+            .mission-strip-inner {
+                max-width: 860px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .mission-label {
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #552697;
+                margin-bottom: 1rem;
+            }
+            .mission-quote {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+                font-weight: 400;
+                font-style: italic;
+                color: #2b2b2b;
+                line-height: 1.65;
+                margin-bottom: 1.5rem;
+            }
+            .mission-quote strong {
+                font-style: normal;
+                font-weight: 700;
+                color: #552697;
+            }
+            .mission-founding {
+                font-size: 0.85rem;
+                color: #666;
+                line-height: 1.6;
+            }
+
+            /* ── Stats row ─────────────────────────────────────────── */
+            .stats-row {
+                background: #552697;
+                padding: 2.5rem 1.5rem;
+            }
+            .stats-inner {
+                max-width: 900px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                text-align: center;
+            }
+            .stat-number {
+                font-family: 'Playfair Display', serif;
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: #ffc03d;
+                line-height: 1;
+                margin-bottom: 0.35rem;
+            }
+            .stat-label {
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: rgba(255,255,255,0.8);
+                letter-spacing: 0.04em;
+                line-height: 1.4;
+            }
+
+            /* ── History section ───────────────────────────────────── */
+            .history-section {
+                padding: 4.5rem 1.5rem;
+                background: #fff;
+            }
+            .history-inner {
+                max-width: 960px;
+                margin: 0 auto;
+            }
+            .section-label-sm {
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #552697;
+                margin-bottom: 0.5rem;
+            }
+            .history-heading {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.5rem, 3vw, 2.2rem);
+                font-weight: 700;
+                color: #2b2b2b;
+                margin-bottom: 2.5rem;
+                max-width: 600px;
+            }
+            .history-pillars {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            .history-pillar {
+                border-top: 3px solid #ffc03d;
+                padding-top: 1.2rem;
+            }
+            .history-pillar-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #552697;
+                margin-bottom: 0.6rem;
+            }
+            .history-pillar-text {
+                font-size: 0.88rem;
+                color: #444;
+                line-height: 1.7;
+            }
+
+            /* ── CTA strip ─────────────────────────────────────────── */
+            .about-cta-strip {
+                background: #2b2b2b;
+                padding: 3.5rem 1.5rem;
+                text-align: center;
+            }
+            .about-cta-strip h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.5rem, 3vw, 2rem);
+                color: #fff;
+                margin-bottom: 1.5rem;
+            }
+            .about-cta-strip .cta-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .cta-gold {
+                display: inline-block;
+                background: #ffc03d;
+                color: #2b2b2b;
+                font-size: 0.85rem;
+                font-weight: 800;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 0.85rem 2.2rem;
+                border-radius: 3px;
+                text-decoration: none;
+                transition: background 0.2s ease;
+            }
+            .cta-gold:hover { background: #e6a800; }
+            .cta-outline {
+                display: inline-block;
+                border: 2px solid rgba(255,255,255,0.5);
+                color: #fff;
+                font-size: 0.85rem;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 0.85rem 2.2rem;
+                border-radius: 3px;
+                text-decoration: none;
+                transition: border-color 0.2s ease;
+            }
+            .cta-outline:hover { border-color: #fff; }
+
+            @media (max-width: 768px) {
+                .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+                .history-pillars { grid-template-columns: 1fr; }
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Skip to Content</a>
+
+        <header class="site-header" id="site-header">
+            <div class="header-top-bar">
+                <a href="donate.html" class="btn btn-donate-top">Donate</a>
+            </div>
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <div class="nav-brand">
+                    <a href="index.html" class="nav-logo-link">
+                        <img src="https://images.squarespace-cdn.com/content/v1/63d876b04840d70bfde917a5/1675130650671-SEGVVZCSW664RX75M47V/AML-white_logo_small.png" alt="Art Museum of Greater Lafayette" class="nav-logo-img" />
+                    </a>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li class="nav-item has-dropdown">
+                        <a href="exhibits.html">Exhibits</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="exhibits.html">Current Exhibits</a></li>
+                            <li><a href="exhibits.html">Upcoming Exhibits</a></li>
+                            <li><a href="exhibits.html">Past Exhibits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="events.html">Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="events.html#upcoming-events">Upcoming Events</a></li>
+                            <li><a href="events.html#calendar">Events Calendar</a></li>
+                            <li><a href="events.html#past-events">Past Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="classes.html">Classes</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="classes.html">All Classes</a></li>
+                            <li><a href="classes.html#register">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="visit.html">Visit</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Docent Tours</a></li>
+                            <li><a href="#">Gift Shop</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="donate.html">Support</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="donate.html">Become a Member</a></li>
+                            <li><a href="donate.html">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Art League</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="about.html">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our History &amp; Mission</a></li>
+                            <li><a href="#">Staff &amp; Board</a></li>
+                            <li><a href="#">Annual Report</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="donate.html" class="btn btn-donate-nav">Donate</a>
+                    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="mobileMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-label open-label">Open Menu</span>
+                        <span class="hamburger-label close-label">Close Menu</span>
+                    </button>
+                </div>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+                <ul class="mobile-nav-list">
+                    <li><a href="exhibits.html">Exhibits</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="visit.html">Visit</a></li>
+                    <li><a href="donate.html">Support</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="donate.html" class="btn btn-donate-mobile">Donate</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main id="main-content">
+
+            <!-- ── Hero ── -->
+            <section class="about-hero" aria-label="About the Art Museum of Greater Lafayette">
+                <p class="eyebrow">Since 1909</p>
+                <h1>Art That Belongs<br>to Everyone</h1>
+                <p class="hero-sub">
+                    The Art Museum of Greater Lafayette has been a free, community-supported institution
+                    for over 115 years — dedicated to the power of art to inspire, challenge, and connect.
+                </p>
+            </section>
+
+            <!-- ── Mission strip ── -->
+            <section class="mission-strip" aria-label="Our Mission">
+                <div class="mission-strip-inner">
+                    <p class="mission-label">Our Mission</p>
+                    <p class="mission-quote">
+                        &ldquo;To celebrate the power of art to
+                        <strong>inspire, instruct, challenge,</strong>
+                        and build community through collections, exhibitions,
+                        events, and educational and cultural programs.&rdquo;
+                    </p>
+                    <p class="mission-founding">
+                        Founded April 14, 1909 &nbsp;&middot;&nbsp; 501(c)(3) Charitable Organization &nbsp;&middot;&nbsp;
+                        American Alliance of Museums Accredited since 1982 &nbsp;&middot;&nbsp;
+                        The only accredited art museum in Northwest Indiana
+                    </p>
+                </div>
+            </section>
+
+            <!-- ── Stats ── -->
+            <div class="stats-row" aria-label="Museum at a glance">
+                <div class="stats-inner">
+                    <div class="stat-item">
+                        <div class="stat-number">115+</div>
+                        <div class="stat-label">Years serving<br>the community</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1,400+</div>
+                        <div class="stat-label">Works in our<br>permanent collection</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">Admission every<br>day we are open</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1982</div>
+                        <div class="stat-label">AAM accredited —<br>the first in the region</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── History pillars ── -->
+            <section class="history-section" aria-label="Our History">
+                <div class="history-inner">
+                    <p class="section-label-sm">Our Story</p>
+                    <h2 class="history-heading">Over a century of art in the heart of Lafayette.</h2>
+                    <div class="history-pillars">
+                        <div class="history-pillar">
+                            <h3 class="history-pillar-title">Founded in 1909</h3>
+                            <p class="history-pillar-text">
+                                Established on April 14, 1909 as the Lafayette Art Association, the museum was
+                                created to stimulate interest in art, hold annual exhibitions, and build a
+                                permanent collection for the community. Over a century later, that founding
+                                purpose still guides everything we do.
+                            </p>
+                        </div>
+                        <div class="history-pillar">
+                            <h3 class="history-pillar-title">Our Collection</h3>
+                            <p class="history-pillar-text">
+                                The museum's permanent collection features over 1,400 works of primarily
+                                American art — from regional painters to nationally recognized artists. Rotating
+                                exhibitions bring fresh perspectives to our galleries every 3–6 months,
+                                so there is always something new to discover.
+                            </p>
+                        </div>
+                        <div class="history-pillar">
+                            <h3 class="history-pillar-title">Accreditation &amp; Community</h3>
+                            <p class="history-pillar-text">
+                                In 1982 the museum earned accreditation from the American Alliance of Museums —
+                                a distinction held by fewer than 5% of museums nationally. We are the only
+                                accredited art museum in Northwest Indiana, and we remain committed to
+                                keeping our doors open and our admission free.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── CTA ── -->
+            <section class="about-cta-strip" aria-label="Visit and support">
+                <h2>Come See Us in Lafayette</h2>
+                <div class="cta-group">
+                    <a href="visit.html" class="cta-gold">Plan Your Visit</a>
+                    <a href="donate.html" class="cta-outline">Support the Museum</a>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-inner">
+                <div class="footer-col footer-col-brand">
+                    <div class="footer-logo-placeholder">
+                        <span class="footer-logo-text">Art Museum of Greater Lafayette</span>
+                    </div>
+                    <address class="footer-address">
+                        <strong>102 S. 10th Street, Lafayette, IN 47905</strong><br />
+                        <a href="tel:7657421128">765-742-1128</a>
+                    </address>
+                    <div class="footer-report">
+                        <strong>Access 2025's Annual Report</strong><br />
+                        <a href="#" class="btn btn-footer-report">Read Report</a>
+                    </div>
+                </div>
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-col-heading">Hours</h4>
+                    <p>Open every day from 11:00 am – 4:00 pm.</p>
+                    <p>Closed on holidays and between exhibits.</p>
+                </div>
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-col-heading">Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Tax Documents</a></li>
+                        <li><a href="#">Board Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-col-newsletter">
+                    <h4 class="footer-col-heading">Stay Connected</h4>
+                    <form class="footer-newsletter-form" action="#" method="post" aria-label="Footer newsletter form">
+                        <label for="footerEmail" class="sr-only">Email Address</label>
+                        <input type="email" id="footerEmail" name="email" class="footer-newsletter-input" placeholder="Your email address" required />
+                        <button type="submit" class="btn btn-footer-subscribe">Subscribe</button>
+                    </form>
+                    <div class="footer-social" aria-label="Social Media Links">
+                        <p class="footer-social-label">Follow Us:</p>
+                        <div class="footer-social-links">
+                            <a href="#" class="social-link" aria-label="Facebook [placeholder]"><span class="social-icon">f</span></a>
+                            <a href="#" class="social-link" aria-label="Instagram [placeholder]"><span class="social-icon">&#9643;</span></a>
+                            <a href="#" class="social-link" aria-label="Twitter/X [placeholder]"><span class="social-icon">&#120143;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <div class="footer-visitor-info">
+                        <a href="#" class="footer-visitor-link">
+                            <span class="footer-visitor-icon">&#127760;</span>
+                            <em>Your resource for local Visitors' Information!</em>
+                        </a>
+                    </div>
+                    <p class="footer-copyright">&copy; <span id="footerYear"></span> Art Museum of Greater Lafayette. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <script>document.getElementById("footerYear").textContent = new Date().getFullYear();</script>
+    </body>
+</html>

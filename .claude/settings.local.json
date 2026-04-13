@@ -8,7 +8,12 @@
       "WebFetch(domain:www.clevelandart.org)",
       "WebFetch(domain:www.moma.org)",
       "WebFetch(domain:www.metmuseum.org)",
-      "WebFetch(domain:engage.metmuseum.org)"
+      "WebFetch(domain:engage.metmuseum.org)",
+      "Bash(python3 -c ':*)",
+      "Bash(python -c \"print\\('ok'\\)\")",
+      "Bash(node -e \"console.log\\('node ok'\\)\")",
+      "Bash(python -c ':*)",
+      "WebSearch"
     ]
   }
 }

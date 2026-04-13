@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Visit — Art Museum of Greater Lafayette</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <style>
+            *, *::before, *::after { box-sizing: border-box; }
+
+            /* ── Hero ─────────────────────────────────────────────── */
+            .visit-hero {
+                background-color: #1e3a2f;
+                color: #fff;
+                padding: 5rem 1.5rem 4rem;
+                text-align: center;
+            }
+            .visit-hero .eyebrow {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.75rem;
+            }
+            .visit-hero h1 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(2.2rem, 5vw, 3.4rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 1.1rem;
+                line-height: 1.15;
+            }
+            .visit-hero .hero-sub {
+                max-width: 580px;
+                margin: 0 auto;
+                font-size: 1rem;
+                color: rgba(255,255,255,0.8);
+                line-height: 1.75;
+            }
+
+            /* ── Quick facts bar ───────────────────────────────────── */
+            .visit-facts {
+                background: #ffc03d;
+                padding: 1.25rem 1.5rem;
+            }
+            .visit-facts-inner {
+                max-width: 900px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0;
+                flex-wrap: wrap;
+            }
+            .visit-fact {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.35rem 1.8rem;
+                font-size: 0.88rem;
+                font-weight: 700;
+                color: #2b2b2b;
+                border-right: 2px solid rgba(0,0,0,0.15);
+            }
+            .visit-fact:last-child { border-right: none; }
+            .visit-fact-icon {
+                font-size: 1rem;
+            }
+
+            /* ── Main details grid ─────────────────────────────────── */
+            .visit-details {
+                padding: 4.5rem 1.5rem;
+                background: #fff;
+            }
+            .visit-details-inner {
+                max-width: 960px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem 4rem;
+            }
+            .section-label-sm {
+                font-size: 0.7rem;
+                font-weight: 800;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #552697;
+                margin-bottom: 0.5rem;
+            }
+            .visit-card-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #2b2b2b;
+                margin-bottom: 1rem;
+                padding-bottom: 0.75rem;
+                border-bottom: 3px solid #ffc03d;
+            }
+            .visit-card-body {
+                font-size: 0.9rem;
+                color: #444;
+                line-height: 1.75;
+            }
+            .visit-card-body p { margin-bottom: 0.6rem; }
+            .visit-card-body strong { color: #2b2b2b; }
+            .visit-card-body a { color: #552697; text-decoration: underline; }
+            .visit-card-body a:hover { color: #3d1d6e; }
+            .hours-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 0.88rem;
+                margin-top: 0.25rem;
+            }
+            .hours-table td {
+                padding: 0.4rem 0;
+                color: #444;
+            }
+            .hours-table td:first-child {
+                font-weight: 600;
+                color: #2b2b2b;
+                width: 40%;
+            }
+
+            /* ── Accessibility strip ───────────────────────────────── */
+            .accessibility-strip {
+                background: #faf9fe;
+                border-top: 1px solid #e8e4f8;
+                border-bottom: 1px solid #e8e4f8;
+                padding: 3.5rem 1.5rem;
+            }
+            .accessibility-inner {
+                max-width: 960px;
+                margin: 0 auto;
+            }
+            .access-heading {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+                font-weight: 700;
+                color: #2b2b2b;
+                margin-bottom: 2rem;
+            }
+            .access-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+            .access-item {
+                border-top: 3px solid #552697;
+                padding-top: 1rem;
+            }
+            .access-item-title {
+                font-family: 'Playfair Display', serif;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #552697;
+                margin-bottom: 0.5rem;
+            }
+            .access-item-text {
+                font-size: 0.87rem;
+                color: #555;
+                line-height: 1.7;
+            }
+
+            /* ── Group tours CTA ───────────────────────────────────── */
+            .group-section {
+                background: #2b2b2b;
+                padding: 4rem 1.5rem;
+                text-align: center;
+                color: #fff;
+            }
+            .group-section .eyebrow {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: #ffc03d;
+                margin-bottom: 0.75rem;
+            }
+            .group-section h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: clamp(1.5rem, 3vw, 2.2rem);
+                color: #fff;
+                margin-bottom: 1rem;
+            }
+            .group-section p {
+                max-width: 560px;
+                margin: 0 auto 2rem;
+                font-size: 0.95rem;
+                color: rgba(255,255,255,0.8);
+                line-height: 1.75;
+            }
+            .cta-gold {
+                display: inline-block;
+                background: #ffc03d;
+                color: #2b2b2b;
+                font-size: 0.85rem;
+                font-weight: 800;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                padding: 0.85rem 2.2rem;
+                border-radius: 3px;
+                text-decoration: none;
+                transition: background 0.2s ease;
+            }
+            .cta-gold:hover { background: #e6a800; }
+
+            @media (max-width: 768px) {
+                .visit-details-inner { grid-template-columns: 1fr; gap: 2rem; }
+                .access-grid { grid-template-columns: 1fr; }
+                .visit-fact { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); width: 100%; padding: 0.5rem 0; }
+                .visit-fact:last-child { border-bottom: none; }
+                .visit-facts-inner { flex-direction: column; align-items: flex-start; padding: 0 1rem; }
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Skip to Content</a>
+
+        <header class="site-header" id="site-header">
+            <div class="header-top-bar">
+                <a href="donate.html" class="btn btn-donate-top">Donate</a>
+            </div>
+            <nav class="navbar" role="navigation" aria-label="Main Navigation">
+                <div class="nav-brand">
+                    <a href="index.html" class="nav-logo-link">
+                        <img src="https://images.squarespace-cdn.com/content/v1/63d876b04840d70bfde917a5/1675130650671-SEGVVZCSW664RX75M47V/AML-white_logo_small.png" alt="Art Museum of Greater Lafayette" class="nav-logo-img" />
+                    </a>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li class="nav-item has-dropdown">
+                        <a href="exhibits.html">Exhibits</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="exhibits.html">Current Exhibits</a></li>
+                            <li><a href="exhibits.html">Upcoming Exhibits</a></li>
+                            <li><a href="exhibits.html">Past Exhibits</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="events.html">Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="events.html#upcoming-events">Upcoming Events</a></li>
+                            <li><a href="events.html#calendar">Events Calendar</a></li>
+                            <li><a href="events.html#past-events">Past Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="classes.html">Classes</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="classes.html">All Classes</a></li>
+                            <li><a href="classes.html#register">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="visit.html">Visit</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Plan Your Visit</a></li>
+                            <li><a href="#">Docent Tours</a></li>
+                            <li><a href="#">Gift Shop</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="donate.html">Support</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="donate.html">Become a Member</a></li>
+                            <li><a href="donate.html">Donate</a></li>
+                            <li><a href="#">Volunteer</a></li>
+                            <li><a href="#">Art League</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-dropdown">
+                        <a href="about.html">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Our History &amp; Mission</a></li>
+                            <li><a href="#">Staff &amp; Board</a></li>
+                            <li><a href="#">Annual Report</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="donate.html" class="btn btn-donate-nav">Donate</a>
+                    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open Menu" aria-expanded="false" aria-controls="mobileMenu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-label open-label">Open Menu</span>
+                        <span class="hamburger-label close-label">Close Menu</span>
+                    </button>
+                </div>
+            </nav>
+            <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+                <ul class="mobile-nav-list">
+                    <li><a href="exhibits.html">Exhibits</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="visit.html">Visit</a></li>
+                    <li><a href="donate.html">Support</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="donate.html" class="btn btn-donate-mobile">Donate</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main id="main-content">
+
+            <!-- ── Hero ── -->
+            <section class="visit-hero" aria-label="Plan your visit">
+                <p class="eyebrow">102 S. 10th Street, Lafayette, IN</p>
+                <h1>Plan Your Visit</h1>
+                <p class="hero-sub">
+                    We're open 7 days a week with free admission every day.
+                    Come explore our galleries, gift shop, and rotating exhibitions.
+                </p>
+            </section>
+
+            <!-- ── Quick facts bar ── -->
+            <div class="visit-facts" aria-label="Quick visit facts">
+                <div class="visit-facts-inner">
+                    <div class="visit-fact">
+                        Open 7 days &nbsp;11:00am – 4:00pm
+                    </div>
+                    <div class="visit-fact">
+                        Free Admission
+                    </div>
+                    <div class="visit-fact">
+                        102 S. 10th St, Lafayette, IN 47905
+                    </div>
+                    <div class="visit-fact">
+                        <a href="tel:7657421128" style="color:#2b2b2b;">765-742-1128</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Visit details ── -->
+            <section class="visit-details" aria-label="Visit details">
+                <div class="visit-details-inner">
+
+                    <div>
+                        <p class="section-label-sm">Hours</p>
+                        <h2 class="visit-card-title">When We're Open</h2>
+                        <div class="visit-card-body">
+                            <table class="hours-table">
+                                <tr><td>Monday – Sunday</td><td>11:00 am – 4:00 pm</td></tr>
+                            </table>
+                            <p style="margin-top:1rem;">
+                                <strong>Closed</strong> on major holidays and between exhibits.
+                                Check our <a href="events.html">events calendar</a> for any special closures or extended hours.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="section-label-sm">Admission</p>
+                        <h2 class="visit-card-title">Always Free</h2>
+                        <div class="visit-card-body">
+                            <p>
+                                Admission to the Art Museum of Greater Lafayette is <strong>free every day we are open</strong> —
+                                for everyone. No tickets, no reservations needed for general admission.
+                            </p>
+                            <p>
+                                Donations are always welcome and help keep our doors open and our programs running.
+                                <a href="donate.html">Make a gift &rarr;</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="section-label-sm">Location &amp; Parking</p>
+                        <h2 class="visit-card-title">Getting Here</h2>
+                        <div class="visit-card-body">
+                            <p><strong>Address</strong><br />102 S. 10th Street<br />Lafayette, IN 47905</p>
+                            <p>
+                                <strong>Parking</strong><br />
+                                ADA-accessible parking is available on 9th Street.
+                                Street parking is available along 10th Street and surrounding blocks.
+                            </p>
+                            <p>
+                                <strong>Phone</strong><br />
+                                <a href="tel:7657421128">765-742-1128</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="section-label-sm">While You're Here</p>
+                        <h2 class="visit-card-title">Make the Most of Your Visit</h2>
+                        <div class="visit-card-body">
+                            <p>
+                                <strong>Gift Shop</strong><br />
+                                Browse locally-made prints, jewelry, books, and art supplies in our on-site gift shop.
+                            </p>
+                            <p>
+                                <strong>Docent Tours</strong><br />
+                                Guided tours are available for groups. Contact us in advance to schedule a tour
+                                tailored to your interests or age group.
+                            </p>
+                            <p>
+                                <strong>Classes &amp; Workshops</strong><br />
+                                We offer art classes for all ages — from watercolor and pottery to youth programs.
+                                <a href="classes.html">View classes &rarr;</a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ── Accessibility ── -->
+            <section class="accessibility-strip" aria-label="Accessibility">
+                <div class="accessibility-inner">
+                    <h2 class="access-heading">Accessibility</h2>
+                    <div class="access-grid">
+                        <div class="access-item">
+                            <h3 class="access-item-title">ADA Parking</h3>
+                            <p class="access-item-text">
+                                Accessible parking spaces are located on 9th Street adjacent to the museum entrance.
+                            </p>
+                        </div>
+                        <div class="access-item">
+                            <h3 class="access-item-title">Accommodations</h3>
+                            <p class="access-item-text">
+                                The museum strives to provide reasonable accommodations for all visitors.
+                                Please contact us in advance if you require specific assistance.
+                            </p>
+                        </div>
+                        <div class="access-item">
+                            <h3 class="access-item-title">Contact Us</h3>
+                            <p class="access-item-text">
+                                For accessibility requests, reach us at <a href="tel:7657421128" style="color:#552697;">765-742-1128</a>
+                                or visit in person during museum hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── Group tours CTA ── -->
+            <section class="group-section" aria-label="Group visits">
+                <p class="eyebrow">Groups &amp; Schools</p>
+                <h2>Bring Your Group to the Museum</h2>
+                <p>
+                    We welcome school classes, scout troops, senior groups, community organizations, and businesses.
+                    Tours can be tailored to specific interests and include hands-on activities in our studio classrooms.
+                </p>
+                <a href="events.html" class="cta-gold">View Upcoming Events</a>
+            </section>
+
+        </main>
+
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-inner">
+                <div class="footer-col footer-col-brand">
+                    <div class="footer-logo-placeholder">
+                        <span class="footer-logo-text">Art Museum of Greater Lafayette</span>
+                    </div>
+                    <address class="footer-address">
+                        <strong>102 S. 10th Street, Lafayette, IN 47905</strong><br />
+                        <a href="tel:7657421128">765-742-1128</a>
+                    </address>
+                    <div class="footer-report">
+                        <strong>Access 2025's Annual Report</strong><br />
+                        <a href="#" class="btn btn-footer-report">Read Report</a>
+                    </div>
+                </div>
+                <div class="footer-col footer-col-hours">
+                    <h4 class="footer-col-heading">Hours</h4>
+                    <p>Open every day from 11:00 am – 4:00 pm.</p>
+                    <p>Closed on holidays and between exhibits.</p>
+                </div>
+                <div class="footer-col footer-col-links">
+                    <h4 class="footer-col-heading">Links</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Tax Documents</a></li>
+                        <li><a href="#">Board Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-col-newsletter">
+                    <h4 class="footer-col-heading">Stay Connected</h4>
+                    <form class="footer-newsletter-form" action="#" method="post" aria-label="Footer newsletter form">
+                        <label for="footerEmail" class="sr-only">Email Address</label>
+                        <input type="email" id="footerEmail" name="email" class="footer-newsletter-input" placeholder="Your email address" required />
+                        <button type="submit" class="btn btn-footer-subscribe">Subscribe</button>
+                    </form>
+                    <div class="footer-social" aria-label="Social Media Links">
+                        <p class="footer-social-label">Follow Us:</p>
+                        <div class="footer-social-links">
+                            <a href="#" class="social-link" aria-label="Facebook [placeholder]"><span class="social-icon">f</span></a>
+                            <a href="#" class="social-link" aria-label="Instagram [placeholder]"><span class="social-icon">&#9643;</span></a>
+                            <a href="#" class="social-link" aria-label="Twitter/X [placeholder]"><span class="social-icon">&#120143;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <div class="footer-visitor-info">
+                        <a href="#" class="footer-visitor-link">
+                            <span class="footer-visitor-icon">&#127760;</span>
+                            <em>Your resource for local Visitors' Information!</em>
+                        </a>
+                    </div>
+                    <p class="footer-copyright">&copy; <span id="footerYear"></span> Art Museum of Greater Lafayette. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/main.js"></script>
+        <script>document.getElementById("footerYear").textContent = new Date().getFullYear();</script>
+    </body>
+</html>
